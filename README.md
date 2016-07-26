@@ -56,3 +56,4 @@ Vídeo explicativo para instalação: (https://www.youtube.com/watch?v=1MvsIhmpJ
 ## Contribua
 
 1. Veja as tarefas e próximos passos em (https://trello.com/b/SQzvgWzT/freelancer-billing)
+2. Leia a documentação do framework utilizado: (http://www.codeigniter.com/userguide2/) É simples, leve tem uma curva de arendizado muito suave e várias funções e recursos embutidos.

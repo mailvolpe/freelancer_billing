@@ -1,0 +1,482 @@
+
+.dashboard-title{
+	margin-top:2px;
+	font-size:25px;
+}
+
+.missing_address{
+	/*color:#C00;*/
+}
+
+.tr-even{
+	/*background-color:#f0f0f0;*/
+}
+
+.print_tag_page{
+	display:block; 
+	width:1000px; 
+	height:1294px; 
+	background-position:top left;
+	background-repeat:no-repeat;
+	background-size:100% auto;
+	page-break-after: always; 
+	page-break-inside: avoid;
+	padding-top:110px;
+	padding-left:125px;
+	overflow:hidden;
+}
+
+.print_tag_item{
+	width:360px; 
+	height:215px;  /* Esta medida ficou OK no gabarito */
+	/*height:217px;*/ /* Esta medida é a que colocamos para ajustar e depois voltamos */
+	float:left; 
+	margin-right:30px;
+	overflow:hidden;
+	padding:20px 15px 15px 15px;
+	text-align:left;
+	font-size:17px;
+	line-height:21px;
+}
+
+.address-tag-name{
+	font-size:20px; 
+	font-weight:bold;
+	margin-bottom:12px;
+}
+
+.address-tag-body{
+	font-size:18px; 
+	line-height:24px;
+}
+
+.credential-body{
+	height:110px; 
+	overflow:hidden; 
+}
+
+.credential-footer{
+	margin-top:12px;
+}
+
+.credential-footer-id{
+	width:27%; 
+	border:1px solid black; 
+	border-radius:8px; 
+	font-size:14px; 
+	text-align:center; 
+	float:left;
+}
+
+.credential-footer-signature{
+	width:69%; 
+	text-align:center; 
+	float:right; 
+	padding-top:28px; 
+	font-size:12px;
+}
+
+.credential-footer-signature-line{
+	border-top:1px solid black;
+}
+
+.submenu-options a{
+	display:block;
+	color:#bbb;
+	padding:9px 0 9px 21px;
+	text-decoration:none;
+	background:#22242B;
+}
+
+.submenu-options a:HOVER{
+	background:#11121A;
+	color:#ddd;
+}
+
+.table-birthdays{
+	font-size:1.5em;
+	margin:auto;
+}
+
+.header-buttons{
+	margin-right:12px;
+}
+
+
+.dashboard-panel-link:hover{
+	text-decoration:none;
+}
+
+.dashboard-panel:hover{
+	background-color:#f8f8f8;
+}
+
+.dashboard-panel .panel-body .icon{
+	display: block;
+    float: right;
+    height: 80px;
+    padding-left: 15px;
+    padding-top: 10px;
+    width: 80px;
+	margin-top:-5px;
+}
+
+.dashboard-panel .panel-body .icon i{
+	color: rgba(0, 0, 0, 0.05);
+    font-size: 100px;
+    line-height: 65px;
+}
+
+.dashboard-panel .panel-body{
+	padding-bottom:10px;
+	max-height:97px;
+	overflow:hidden;
+}
+
+.dashboard-panel .panel-body span{
+	font-size:20px;
+	width:100%;
+	overflow:hidden;
+	display:block;
+	position:relative;
+	top:-30px;
+}
+
+.dashboard-panel .panel-footer .fa{
+	font-size:19px;
+	padding-top:1px;
+}
+
+.dashboard-panel .panel-footer{
+	background-color:#2C70A8;
+	padding-top:6px;
+	padding-bottom:6px;
+	color:#fff;
+	border-radius:0px;
+}
+
+.dashboard-panel{
+	border-radius:0px;
+	overflow:hidden;
+	color:#555;
+}
+
+.dashboard-panel h1{
+	margin:0px 0px 3px 0px;
+	font-weight:300;
+}
+
+.sidebar-user-row{
+	padding:18px 0 18px 0; 
+	margin:0; 
+	font-weight:100;
+}
+
+.sidebar-user-row a{
+	color:#ddd;
+	text-decoration:none;
+}
+
+.login-header{
+	color:#fff;
+	text-align:center;
+	padding-top:5%;
+}
+
+.logged-user-info{
+	padding:9px;
+	padding-top:3px;
+}
+
+.logged-user-photo{
+	border-radius:50%;
+	width:75px;
+	height:75px;
+	margin:auto;
+	background-size:cover;
+}
+
+.page-header{
+	margin-top:0px;
+}
+
+.modal-page-header{
+	margin-bottom:20px;
+}
+
+.page-header h3{
+	margin-top:6px;
+}
+
+#navbar{	
+	padding:0px;
+}
+
+.nav li a i{
+	display:block;
+	font-size:22px;
+	margin:6px;
+}
+
+.nav li{
+	border-top: 1px solid rgba(255, 255, 255, 0.04);
+	
+}
+
+.nav>li>a{
+	color:#aaa;
+	padding:10px;
+	border-radius:none;	
+	text-align:center;
+	font-size:14px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+	background-color:#22242b;
+	color:#fff;
+}
+
+
+.client_name_container{
+	/*background-color:#2C70A8;*/
+	background-color:#272930;
+	color:#ffffff;
+}
+
+
+.navbar-container{
+	background-color:#272930;
+	border-bottom:0px solid #417FB1;
+	color:#fff;
+}
+
+.topbar-container{
+	padding:9px;
+}
+
+.footer-row{
+	background-color:#272930;
+	color:#999;
+}
+
+
+.main-admin-row-header{
+	background-color:#417FB1;
+	background-color:#272930;
+	
+}
+
+
+.main-admin-row{
+	background-color:#F0F0F0;
+}
+
+.logged_sidebar_photo{
+	width:53px;
+	height:53px;
+	border-radius:50%;
+	background-size:cover;
+	float:right;
+}
+
+.members_index_photo{
+	width:45px;
+	height:45px;
+	border-radius:50%;
+	background-size:cover;
+	margin:3px;
+	
+}
+
+.members_view_photo{
+	max-width:100%;
+	max-height:250px;
+	border:1px solid #e0e0e0;
+}
+
+.nav>li>a{
+	border-radius:4px;
+}
+
+.add-bottom-margin{
+	margin-bottom:24px;
+}
+
+.no-padding-col{
+	padding:0;
+}
+
+.bold{
+	font-weight:bold;
+}
+
+.help-block{
+	color:#c00;
+}
+
+.pre-formatted{
+	white-space:pre-wrap;
+	
+}
+
+.view-option-link{
+	margin-bottom: 15px;
+}
+
+.messages{
+	margin-top:21px;
+}
+
+.sidebar-buttons{
+	
+}
+
+.tag{
+	margin:0 9px 12px 0;	
+}
+
+.tag-remove{
+	margin-left:9px;
+}
+
+.brand-row{
+	padding-top:9px;
+	padding-bottom:9px;
+}
+
+.datatable-footer{
+	margin-top:8px;
+}
+
+
+.page-subheader div{
+	margin-bottom:8px;
+}
+
+.breadcrumb-search{
+	padding:9px;
+	min-width:270px;
+}
+
+.left{
+	text-align:left;
+}
+.right{
+	text-align:right;
+}
+.footer{
+	padding-top:10px;
+	padding-bottom:10px;
+	font-weight:100;
+}
+
+object[type="application/gas-events-cef"] {
+    display: none;
+} 	
+
+body{
+	font-family:'Lato';
+	background-color:#272930;
+}
+
+.system_login_body{
+	background-repeat:no-repeat;
+	background-size:cover cover;
+	padding-top:5%;
+}
+
+.login-sys-title{
+	color:#fff;
+}
+
+.login-well{
+	border:6px solid #c0c0c0;
+}
+
+a{
+	color:#275D8C;
+}
+
+@media screen and (min-width: 48em){
+	.center-sm{
+		text-align:center;
+	}
+	
+	.page-content{
+		margin-top:15px;
+		margin-bottom:15px;
+		min-height:500px;
+		padding:15px 15px 18px 15px;
+		border:1px solid #e0e0e0;
+		background-color:#fff;
+	}
+		
+	.dashboard-panel-footer-row{
+		margin-top:235px;
+	}	
+	
+}
+
+@media screen and (max-width: 48em){
+
+	.page-content{
+	
+		padding-bottom:18px;
+
+	}
+	
+	.center-xs{
+		text-align:center;
+	}
+	.container{
+		padding-left:0px;
+		padding-right:0px;
+	}
+	.table-responsive{
+		border: none;	
+	}
+	.table-responsive td{
+		white-space:normal !important;
+	}	
+	.mobile-text-right{
+		text-align:right;
+	}
+}
+
+.container{
+	background-color:#fff;;
+}
+
+.last-container{
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
+	padding-bottom:16px;
+	padding-top:160px;
+	margin-bottom:60px;
+}
+
+
+@media print{
+
+	.page-content, .main-admin-content, body{
+		padding:0px;
+		margin:0px;
+	}
+		
+	.dont-print{
+		display:none;
+	}
+	
+	a[href]:after {
+		content: none
+	}
+	
+	
+}
+
+/*
+
+AZUL A - #2C70A8
+AZUL B -> #417FB1 
+
+*/

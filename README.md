@@ -1,6 +1,10 @@
 # Freelance Billing
-
 Sistema Open Source para gestão de clientes e cobrança recorrente automatizada
+
+##Demonstração
+- URL: http://freelancerbilling.formasites.com.br/
+- User: **admin@admin.com**
+- Pass: **admin**
 
 ##Descrição do Funcionamento a partir do modelo de dados
 Link para video explicativo sobre o modelo de dados: (https://www.youtube.com/watch?v=cbCMy5xd_SQ)

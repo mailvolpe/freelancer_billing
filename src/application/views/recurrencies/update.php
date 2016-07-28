@@ -38,9 +38,11 @@
 		<div class="col-sm-9">
 
 
-			<?=number_field('recurrency_account_id', set_value('recurrency_account_id', $item->recurrency_account_id));?>
+			<?#=number_field('recurrency_account_id', set_value('recurrency_account_id', $item->recurrency_account_id));?>
 
-			</div>
+			<p class="form-control-static"><?=$item->account_title?></p>
+			
+		</div>
 
 	</div>
 

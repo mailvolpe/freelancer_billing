@@ -35,7 +35,7 @@
 
 				<p class="form-control-static">
 				
-					<?=$item->recurrency_account_id?>
+					<?=$item->account_title?>
 
 				</p>
 

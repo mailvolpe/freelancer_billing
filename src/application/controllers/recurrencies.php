@@ -72,6 +72,8 @@ class Recurrencies extends CI_Controller {
 
 		}
 
+		$this->load->vars(array("active_clients"=>$this->Account->index_active_clients()));
+		
 		$this->load->vars(array("page"=>"recurrencies/create"));
 
 		$this->load->view('template/template');
@@ -87,6 +89,8 @@ class Recurrencies extends CI_Controller {
 
 			try{
 
+				$_POST['recurrency_account_id'] = $item->recurrency_account_id;
+			
 				$item = $this->validate();
 
 				$update = $this->Recurrency->update($recurrency_id, $item);
@@ -109,6 +113,8 @@ class Recurrencies extends CI_Controller {
 
 		$item = $this->Recurrency->get_item($recurrency_id);		
 
+		$this->load->vars(array("active_clients"=>$this->Account->index_active_clients()));
+		
 		$this->load->vars(array("page"=>"recurrencies/update"));		
 
 		$this->load->view('template/template', array('item'=>$item));

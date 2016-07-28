@@ -30,7 +30,9 @@
 
 		<div class="col-sm-9">
 
-			<?=number_field('invoice_account_id', set_value('invoice_account_id'));?>
+			<?#=number_field('invoice_account_id', set_value('invoice_account_id'));?>
+			
+			<?=select_field('invoice_account_id', make_select_options_array($active_clients, 'account_id', 'account_title', $this->lang->line('select_value')), set_value('invoice_account_id'));?>
 
 		</div>
 
@@ -68,6 +70,7 @@
 
 	</div>
 
+	<?/*
 	<div class="form-group">
 
 		<label class="col-sm-3 control-label">
@@ -83,6 +86,7 @@
 		</div>
 
 	</div>
+	*/?>
 
 	<div class="form-group">
 

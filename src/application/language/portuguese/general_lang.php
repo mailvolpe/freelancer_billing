@@ -175,7 +175,7 @@ $lang['missing_client_config'] = "O domínio está corretamente configurado mas 
 
 
 $lang['file'] = "Arquivo";
-$lang['sys_title'] = "Central Files"; #&trade; &reg;
+$lang['sys_title'] = "Freelancer Billing"; #&trade; &reg;
 $lang['zipcode_not_found'] = "CEP não encontrado";
 $lang['you'] = "Você";
 

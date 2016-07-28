@@ -110,6 +110,8 @@ class Invoices extends CI_Controller {
 
 		}
 
+		$this->load->vars(array("active_clients"=>$this->Account->index_active_clients()));
+		
 		$this->load->vars(array("page"=>"invoices/create"));
 
 		$this->load->view('template/template');
@@ -123,6 +125,8 @@ class Invoices extends CI_Controller {
 	
 		if($_SERVER['REQUEST_METHOD'] == "POST"){
 
+			$_POST['invoice_account_id'] = $item->invoice_account_id;
+		
 			try{
 
 				$item = $this->validate();
@@ -147,6 +151,8 @@ class Invoices extends CI_Controller {
 
 		$item = $this->Invoice->get_item($invoice_id);		
 
+		$this->load->vars(array("active_clients"=>$this->Account->index_active_clients()));
+		
 		$this->load->vars(array("page"=>"invoices/update"));		
 
 		$this->load->view('template/template', array('item'=>$item));
@@ -161,7 +167,7 @@ class Invoices extends CI_Controller {
 			array ( 
 					"field"=>"invoice_account_id", 
 					"label"=>"lang:invoice_account_id", 
-					"rules"=>"trim"
+					"rules"=>"is_natural_no_zero|trim"
 				),
 				
 								
@@ -175,7 +181,7 @@ class Invoices extends CI_Controller {
 				array ( 
 					"field"=>"invoice_description", 
 					"label"=>"lang:invoice_description", 
-					"rules"=>"required|trim"
+					"rules"=>"trim"
 				),
 								
 				array ( 

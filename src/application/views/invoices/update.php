@@ -38,8 +38,10 @@
 		<div class="col-sm-9">
 
 
-			<?=number_field('invoice_account_id', set_value('invoice_account_id', $item->invoice_account_id));?>
+			<?#=number_field('invoice_account_id', set_value('invoice_account_id', $item->invoice_account_id));?>
 
+			<p class="form-control-static"><?=$item->account_title?></p>
+			
 			</div>
 
 	</div>

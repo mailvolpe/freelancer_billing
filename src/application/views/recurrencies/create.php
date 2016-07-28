@@ -30,8 +30,10 @@
 
 		<div class="col-sm-9">
 
-			<?=number_field('recurrency_account_id', set_value('recurrency_account_id'));?>
+			<?#=number_field('recurrency_account_id', set_value('recurrency_account_id'));?>
 
+			<?=select_field('recurrency_account_id', make_select_options_array($active_clients, 'account_id', 'account_title', $this->lang->line('select_value')), set_value('recurrency_account_id'));?>			
+			
 		</div>
 
 	</div>

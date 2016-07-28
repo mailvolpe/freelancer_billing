@@ -6,7 +6,7 @@
 						<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->recurrency_id;?>">
 							<?=format_id($item->recurrency_id)?>
 						</a></td>
-<td class="hidden-xs"><?=character_limiter(strip_tags($item->recurrency_account_id), 45)?></td>
+<td class="hidden-xs"><?=character_limiter(strip_tags($item->account_title), 45)?></td>
 <td class="hidden-xs"><?=character_limiter(strip_tags($item->recurrency_amount), 45)?></td>
 <td class="hidden-xs"><?=character_limiter(strip_tags($item->recurrency_when_day), 45)?></td>
 <td class="hidden-xs"><?=character_limiter(strip_tags($item->recurrency_when_month), 45)?></td>

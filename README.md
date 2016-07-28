@@ -1,5 +1,9 @@
-# Freelance Billing
-Sistema Open Source para gestão de clientes e cobrança recorrente automatizada
+# Freelancer Billing
+Sistema Open Source para gestão de clientes e cobrança recorrente automatizada que:
+
+1. Gera faturas automaticamente (mensal ou anual) de acordo com o plano do cliente.
+2. Cobra o cliente, automaticamente informando (por e-mail) sobre suas faturas, vencimentos e atrasos.
+3. Tem uma área para o cliente acessar ver suas faturas, pagar online ou enviar comprovante de pagamentos.
 
 ##Demonstração
 - URL: http://freelancerbilling.formasites.com.br/

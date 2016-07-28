@@ -12,7 +12,7 @@ class Invoice extends CI_Model {
 
 	# Index #
 	
-    function index(){
+    function index($invoice_account_id=false){
 
 		# Security clauses goes here #
 	
@@ -22,6 +22,12 @@ class Invoice extends CI_Model {
 	
 		# Filters #
 
+		if($invoice_account_id){
+		
+			$this->db->where('invoice_account_id', $invoice_account_id);
+		
+		}		
+		
 		if($this->input->get('invoice_id')){
 
 			$this->db->where('invoice_id', $this->input->get('invoice_id'));

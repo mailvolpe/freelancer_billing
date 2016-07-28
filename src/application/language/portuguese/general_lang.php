@@ -40,6 +40,8 @@ $lang['recurrency_iterations']="vezes";
 $lang['unlimited_recurrency']="Não estabelecido";
 $lang['recurrency_start']="Ativo";
 
+
+
 $lang['monthly'] = "Mensal";
 $lang['yearly'] = "Anual";
 $lang['on_day'] = "todo dia";
@@ -113,7 +115,8 @@ $lang['unblock'] = "Desbloquear";
 $lang['change_password'] = "Modificar senha";
 $lang['password'] = "Senha";
 $lang['account_password'] = "Senha da conta";
-
+$lang['active_recurrencies']="Recorrencias ativas";
+$lang['unpaid_invoices']="Faturas pendentes";
 
 $lang['yes'] = "Sim";
 $lang['no'] = "Não";

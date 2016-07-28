@@ -5,7 +5,7 @@
 			
 			<h3>
 			
-				<?=$this->lang->line('invoices')?>
+				<?=isset($override_title)?$override_title:$this->lang->line('invoices');?>
 
 				
 			</h3>

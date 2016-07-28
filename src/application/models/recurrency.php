@@ -12,7 +12,7 @@ class Recurrency extends CI_Model {
 
 	# Index #
 	
-    function index(){
+    function index($recurrency_account_id=false){
 
 		# Security clauses goes here #
 	
@@ -21,7 +21,12 @@ class Recurrency extends CI_Model {
 		$this->db->join('accounts', 'accounts.account_id = recurrencies.recurrency_account_id');
 	
 		# Filters #
-
+		if($recurrency_account_id){
+		
+			$this->db->where('recurrency_account_id', $recurrency_account_id);
+		
+		}
+		
 		if($this->input->get('recurrency_id')){
 
 			$this->db->where('recurrency_id', $this->input->get('recurrency_id'));

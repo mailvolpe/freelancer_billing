@@ -9,6 +9,47 @@ class Account extends CI_Model {
 	 
     }
 	
+	function count_active_recurrencies($account_id){
+	
+		$this->db->select("count(*) as active_recurrencies");
+		
+		$this->db->where('recurrency_account_id', $account_id);
+		
+		$this->db->where('recurrency_start', 1);
+
+		$query = $this->db->get('recurrencies');
+		
+		if($query->num_rows()>0){
+
+			$result = $query->row_object();
+
+			return $result->active_recurrencies;	
+
+		}		
+	
+	
+	}
+	
+	function count_unpaid_invoices($account_id){
+	
+		$this->db->select("count(*) as unpaid_invoices");
+		
+		$this->db->where('invoice_account_id', $account_id);
+
+		$this->db->where('invoice_paid_date', null);
+		
+		$query = $this->db->get('invoices');
+		
+		if($query->num_rows()>0){
+
+			$result = $query->row_object();
+
+			return $result->unpaid_invoices;	
+
+		}			
+	
+	}
+	
 	/* 
 	
 		index_active_clients()

@@ -18,10 +18,16 @@ class Recurrencies extends CI_Controller {
 	}
 
 
-	public function index(){
+	public function index($recurrency_account_id=false){
 
-		$data['itens'] = $this->Recurrency->index();
+		$data['itens'] = $this->Recurrency->index($recurrency_account_id);
 
+		if($recurrency_account_id AND $account = $this->Account->get_item($recurrency_account_id)){
+			
+			$this->load->vars(array("override_title" => $this->lang->line('recurrencies')." ".$this->lang->line('of')." ".$account->account_title));
+				
+		}
+		
 		$this->load->vars(array("page" => "recurrencies/index"));
 
 		$this->load->view('template/template', $data);		

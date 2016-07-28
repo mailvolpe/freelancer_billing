@@ -220,11 +220,15 @@
 				
 				<th nowrap>
 					
-				
-					<?=$this->lang->line('account_level')?>
-					
+					<?=$this->lang->line('recurrencies')?>
 					
 				</th>
+				
+				<th nowrap>
+					
+					<?=$this->lang->line('invoices')?>
+					
+				</th>				
 				
 				<th nowrap>
 					

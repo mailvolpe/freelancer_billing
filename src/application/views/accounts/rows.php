@@ -21,6 +21,8 @@
 
 		<td class="visible-xs">
 		
+			<?=$item->account_is_admin?'<i class="fa fa-star"></i>':false?>
+			
 			<a class="" href="<?=base_url()?>accounts/view/<?=$item->account_id;?>">
 				<?=character_limiter(strip_tags($item->account_title), 45)?>
 			</a>
@@ -34,21 +36,24 @@
 		</td>					
 	
 		<td class="hidden-xs">
+			<?=$item->account_is_admin?'<i class="fa fa-star"></i>':false?>
 			<?=character_limiter(strip_tags($item->account_title), 45)?>
 			<?if($acc_info){?><div class="small"><?=$acc_info?></div><?}?>
 		</td>	
 
 		<td class="hidden-xs">
-			<?=character_limiter(strip_tags($item->account_email), 45)?>
+			<a href="mailto:<?=$item->account_email?>" target="_blank"><?=character_limiter(strip_tags($item->account_email), 45)?></a>
 		</td>		
 		
 		
-		
-
-
-		<td class="hidden-xs">
-			<?=$item->account_role?>
+		<td class="">
+			<a href="recurrencies/index/<?=$item->account_id?>"><?=$this->lang->line('active_recurrencies')?> (<?=$this->Account->count_active_recurrencies($item->account_id)?>)</div>
 		</td>		
+
+		<td class="">
+			<a href="invoices/index/<?=$item->account_id?>"><?=$this->lang->line('unpaid_invoices')?> (<?=$this->Account->count_unpaid_invoices($item->account_id)?>)</div>
+		</td>		
+		
 
 		<td class="hidden-xs">
 			<?=human_date($item->account_last_access_date, true, $this->lang->line('no_record'));?>

@@ -5,7 +5,7 @@
 			
 			<h3>
 			
-				<?=$this->lang->line('recurrencies')?>
+				<?=isset($override_title)?$override_title:$this->lang->line('recurrencies');?>
 
 				
 			</h3>

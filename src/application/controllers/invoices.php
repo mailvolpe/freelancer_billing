@@ -54,10 +54,16 @@ class Invoices extends CI_Controller {
 	
 	}
 	
-	public function index(){
+	public function index($invoice_account_id=false){
 
-		$data['itens'] = $this->Invoice->index();
+		$data['itens'] = $this->Invoice->index($invoice_account_id);
 
+		if($invoice_account_id AND $account = $this->Account->get_item($invoice_account_id)){
+			
+			$this->load->vars(array("override_title" => $this->lang->line('invoices')." ".$this->lang->line('of')." ".$account->account_title));
+				
+		}		
+		
 		$this->load->vars(array("page" => "invoices/index"));
 
 		$this->load->view('template/template', $data);		

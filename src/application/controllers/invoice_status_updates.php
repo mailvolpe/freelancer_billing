@@ -13,6 +13,8 @@ class Invoice_status_updates extends CI_Controller {
 
 		requires_session();
 		
+		$this->load->model("Invoice");
+		
 		$this->load->model("Invoice_status_update");
 
 	}
@@ -51,9 +53,13 @@ class Invoice_status_updates extends CI_Controller {
 	
 	}
 
-	public function index(){
+	public function index($invoice_id){
 
-		$data['itens'] = $this->Invoice_status_update->index();
+		if(!$data['item']=$this->Invoice->get_item($invoice_id)){
+			not_allowed();
+		}
+	
+		$data['itens'] = $this->Invoice_status_update->index($invoice_id);
 
 		$this->load->vars(array("page" => "invoice_status_updates/index"));
 
@@ -239,7 +245,7 @@ class Invoice_status_updates extends CI_Controller {
 
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect('invoice_status_updates/index', 'location');
+					redirect('invoice_status_updates/index/'.$item->invoice_status_update_invoice_id, 'location');
 
 				# API option: return $remove
 

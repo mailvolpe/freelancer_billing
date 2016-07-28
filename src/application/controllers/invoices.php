@@ -21,8 +21,13 @@ class Invoices extends CI_Controller {
 
 	
 	
-	public function pay($invoice_id){
+	public function pay($invoice_id, $gateway_id){
+
+		if($gateway_id==2){
+			not_allowed($this->lang->line('not_implemented'));
+		}
 	
+		/*
 		$this->load->library('gateway');
 	
 		$invoice = $this->Invoice->get_item($invoice_id);
@@ -51,6 +56,7 @@ class Invoices extends CI_Controller {
 			redirect($result->checkout_url, 'location');
 			
 		}
+		*/
 	
 	}
 	

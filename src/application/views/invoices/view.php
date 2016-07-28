@@ -119,34 +119,86 @@
 				
 					<?=human_date($item->invoice_paid_date);?>
 					
-					<br>
-					<?foreach($item->status as $status){?>
-					
-						<p>
-						
-							<?=$status->invoice_status_update_datetime?> - 
-							<?=$this->lang->line('invoice_status_update_status_code')?>
-							<?=$status->invoice_status_update_status_code?>
-							<br>
-							<small>
-								<?=$status->invoice_status_update_transaction?>
-							</small>
-							
-						</p>
-						
-					<?}?>
-
-					<?if(count($item->status)>0){?>
-						<a class="btn btn-xs btn-block btn-default" href="invoices/check/<?=$status->invoice_status_update_id?>">	
-							<?=$this->lang->line('check_now')?>
-						</a>	
-					<?}?>
-					
 				</div>
 
 			</div>
 
 		</div>
+		
+		<?if(count($item->status)>0){?>		
+		
+			<div class="form-group">
+
+				<label class="col-sm-5 control-label">
+
+					<?=$this->lang->line('invoice_status_updates')?>
+					
+				</label>
+
+				<div class="col-sm-7">
+
+					<div class="form-control-static">
+										
+						<?foreach($item->status as $status){?>
+						
+							<p>
+							
+								<span class="label label-primary"><?=$this->lang->line($status->invoice_status_update_status_code)?></span>
+								<?=human_date($status->invoice_status_update_datetime)?>
+								
+								<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
+								
+								<div class="small" style="display:none;" id="status_update_info_<?=$status->invoice_status_update_id?>">
+								
+								<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$status->invoice_status_update_gateway?> 
+								
+								<br>
+								
+								<b><?=$this->lang->line('invoice_status_update_transaction')?>:</b> <?=$status->invoice_status_update_transaction?>
+								</div>
+								
+							</p>
+							
+						<?}?>
+						
+					<a class="" href="invoices/check/<?=$status->invoice_status_update_id?>">	
+						<?=$this->lang->line('check_now')?>
+					</a>	
+											
+					</div>
+
+				</div>
+
+			</div>
+			
+		<?}else{?>
+		
+			<div class="form-group">
+
+				<label class="col-sm-5 control-label">
+
+					<?=$this->lang->line('pay_invoice')?>
+					
+				</label>
+
+				<div class="col-sm-7">
+
+					<div class="form-control-static">
+						
+						<a class="btn btn-sm  btn-default" href="invoices/pay/<?=$item->invoice_id?>/1">	
+							<i class="fa fa-money"></i> <?=$this->lang->line('PagSeguro')?>
+						</a>	
+								
+						<a class="btn btn-sm btn-default" href="invoices/pay/<?=$item->invoice_id?>/2">	
+							<i class="fa fa-paypal"></i> <?=$this->lang->line('PayPal')?>
+						</a>									
+					</div>
+
+				</div>
+
+			</div>		
+		
+		<?}?>
 		
 		<div class="form-group">
 

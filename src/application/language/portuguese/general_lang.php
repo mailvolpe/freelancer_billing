@@ -1,14 +1,15 @@
 <?php
 
-$lang['invoice_status_updates']="Status da Fatura";
+$lang['invoice_status_updates']="Atualizações de Status";
 $lang['invoice_status_update']="Atualização de Status";
 $lang['invoice_status_update_id']="Identificador da atualização";
 $lang['invoice_status_update_invoice_id']="Fatura";
 $lang['invoice_status_update_datetime']="Atualizado em";
 $lang['invoice_status_update_gateway']="Meio de Pagamento";
-$lang['invoice_status_update_transaction']="Transação";
+$lang['invoice_status_update_transaction']="Identificador da transação";
 $lang['invoice_status_update_status_code']="Status";
 
+$lang['pay_invoice']="Pagar fatura";
 
 $lang['invoice_notification']="Notificação";
 $lang['invoice_notifications']="Notificações";
@@ -26,6 +27,8 @@ $lang['invoice_created_date']="Criada em";
 $lang['invoice_due_date']="Vencimento";
 $lang['invoice_paid_date']="Pagamento";
 $lang['invoice_id']="Número da Fatura";
+$lang['check_now'] = "Verificar agora";
+
 
 $lang['recurrencies']="Recorrências";
 $lang['recurrency']="Recorrência";
@@ -48,7 +51,7 @@ $lang['on_day'] = "todo dia";
 $lang['every_month'] = "Todo mês";
 $lang['db_now'] = "Hora Atual";
 
-$lang['pending_date'] = "Pedente";
+$lang['pending_date'] = "Pendente";
 
 
 $lang['client_user_email_exception'] = 'Este endereço de e-mail é utilizado por outro usuário.';
@@ -223,6 +226,7 @@ $lang['friday'] = "Sexta";
 $lang['saturday'] = "Sábado";
 $lang['sunday'] = "Domingo";
 
+$lang['not_implemented'] = "Método ainda não implementado.";
 
 
 /* End of file general_lang.php */

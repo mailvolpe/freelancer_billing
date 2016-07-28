@@ -8,7 +8,7 @@
 
 			<?=$this->lang->line('view').' '.$this->lang->line('invoice')?>
 			
-			#<?=format_id($item->invoice_id)?>
+			<?=format_id($item->invoice_id)?>
 
 			
 		</h3>
@@ -84,27 +84,7 @@
 			</div>
 
 		</div>
-	
-		<div class="form-group">
-
-			<label class="col-sm-5 control-label">
-
-				<?=$this->lang->line('invoice_created_date')?>
-
-			</label>
-
-			<div class="col-sm-7">
-
-				<p class="form-control-static">
-				
-					<?=human_date($item->invoice_created_date);?>
-
-				</p>
-
-			</div>
-
-		</div>
-	
+		
 		<div class="form-group">
 
 			<label class="col-sm-5 control-label">
@@ -156,15 +136,38 @@
 						
 					<?}?>
 
-					<a class="btn btn-xs btn-block btn-default" href="invoices/check/<?=$status->invoice_status_update_id?>">	
-						<?=$this->lang->line('check_now')?>
-					</a>	
+					<?if(count($item->status)>0){?>
+						<a class="btn btn-xs btn-block btn-default" href="invoices/check/<?=$status->invoice_status_update_id?>">	
+							<?=$this->lang->line('check_now')?>
+						</a>	
+					<?}?>
 					
 				</div>
 
 			</div>
 
 		</div>
+		
+		<div class="form-group">
+
+			<label class="col-sm-5 control-label">
+
+				<?=$this->lang->line('invoice_created_date')?>
+
+			</label>
+
+			<div class="col-sm-7">
+
+				<p class="form-control-static">
+				
+					<?=human_date($item->invoice_created_date);?>
+
+				</p>
+
+			</div>
+
+		</div>
+		
 		
 	</div>   
 

@@ -29,7 +29,7 @@ $lang['invoice_id']="Número da Fatura";
 
 $lang['recurrencies']="Recorrências";
 $lang['recurrency']="Recorrência";
-$lang['recurrency_id']="Identificador do Plano";
+$lang['recurrency_id']="Recorrência / Contrato";
 $lang['recurrency_account_id']="Cliente";
 $lang['recurrency_amount']="Valor";
 $lang['recurrency_when_day']="Dia do vencimento";
@@ -37,7 +37,7 @@ $lang['recurrency_when_month']="Definir mês";
 $lang['recurrency_description']="Descrição";
 $lang['recurrency_limit']="Limite de Repetições";
 $lang['recurrency_iterations']="vezes";
-$lang['unlimited_recurrency']="Sempre";
+$lang['unlimited_recurrency']="Não estabelecido";
 $lang['recurrency_start']="Ativo";
 
 $lang['monthly'] = "Mensal";

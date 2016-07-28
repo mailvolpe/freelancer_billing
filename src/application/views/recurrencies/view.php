@@ -55,7 +55,7 @@
 
 				<p class="form-control-static">
 				
-					<?=$item->recurrency_amount?>
+					<?=format_currency($item->recurrency_amount)?>
 
 				</p>
 
@@ -67,7 +67,7 @@
 
 			<label class="col-sm-5 control-label">
 
-				<?=$this->lang->line('recurrency_when_day')?>
+				<?=$this->lang->line('recurrency')?>
 
 			</label>
 
@@ -75,27 +75,7 @@
 
 				<p class="form-control-static">
 				
-					<?=$item->recurrency_when_day?>
-
-				</p>
-
-			</div>
-
-		</div>
-	
-		<div class="form-group">
-
-			<label class="col-sm-5 control-label">
-
-				<?=$this->lang->line('recurrency_when_month')?>
-
-			</label>
-
-			<div class="col-sm-7">
-
-				<p class="form-control-static">
-				
-					<?=$item->recurrency_when_month?>
+					<?=explain_recurrency($item->recurrency_when_day, $item->recurrency_when_month)?>
 
 				</p>
 
@@ -135,7 +115,7 @@
 
 				<p class="form-control-static">
 				
-					<?=$item->recurrency_limit?>
+					<?=get_display_value($item->recurrency_limit, $this->lang->line('unlimited_recurrency'), true, false, ' '.$this->lang->line('recurrency_iterations'));?>
 
 				</p>
 
@@ -155,7 +135,7 @@
 
 				<p class="form-control-static">
 				
-					<?=display_bool_value($item->recurrency_start);?>
+					<?=display_bool_value($item->recurrency_start, false, false, true, false);?>
 
 				</p>
 

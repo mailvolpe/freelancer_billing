@@ -17,6 +17,8 @@ class Recurrency extends CI_Model {
 		# Security clauses goes here #
 	
 		# Joins #
+		
+		$this->db->join('accounts', 'accounts.account_id = recurrencies.recurrency_account_id');
 	
 		# Filters #
 
@@ -171,6 +173,8 @@ class Recurrency extends CI_Model {
 
 	function get_item($recurrency_id){
 
+		$this->db->join('accounts', 'recurrencies.recurrency_account_id = accounts.account_id');
+	
 		$query = $this->db->get_where('recurrencies', array('recurrency_id' => $recurrency_id), 1);
 
 		if($query->num_rows()>0){

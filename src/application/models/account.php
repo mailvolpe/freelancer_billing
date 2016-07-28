@@ -9,6 +9,37 @@ class Account extends CI_Model {
 	 
     }
 	
+	/* 
+	
+		index_active_clients()
+		
+		Funçao para retornar todos os clientes ativos sem paginar. 
+		Usada nos select boxes ao criar faturas e planos para definir o cliente.
+		
+		Dá para melhorar aqui se fizermos um <select> com busca em ajax nas views (onde tem seleção de cliente)
+		e que dispara só quando o usuário tiver digitado 3 chars.
+
+	*/
+	function index_active_clients(){
+	
+		$this->db->where('accounts.account_blocked_date', null);
+		
+		$this->db->where('accounts.account_is_admin', 0);
+		
+		$this->db->order_by('account_title');
+		#Performs query
+		
+		$query = $this->db->get('accounts');
+		
+		#Return
+		
+		# echo $this->db->_error_message().$this->db->last_query(); # Debug assist
+
+		return $query->result();
+		
+	
+	}
+	
 	function get_account_data($account){
 	
 		$data = new stdClass;

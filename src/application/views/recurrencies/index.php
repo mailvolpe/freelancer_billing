@@ -187,11 +187,11 @@
 				
 				<th nowrap>
 					
-					<a href="<?=order_by_url('recurrency_account_id')?>">
+					<a href="<?=order_by_url('account_title')?>">
 					
-						<?=$this->lang->line('recurrency_account_id')?>
+						<?=$this->lang->line('account_title')?>
 						
-					</a><?=order_by_reverse('recurrency_account_id')?>
+					</a><?=order_by_reverse('account_title')?>
 					
 				</th>
 				
@@ -209,28 +209,6 @@
 				
 				<th nowrap>
 					
-					<a href="<?=order_by_url('recurrency_when_day')?>">
-					
-						<?=$this->lang->line('recurrency_when_day')?>
-						
-					</a><?=order_by_reverse('recurrency_when_day')?>
-					
-				</th>
-				
-				
-				<th nowrap>
-					
-					<a href="<?=order_by_url('recurrency_when_month')?>">
-					
-						<?=$this->lang->line('recurrency_when_month')?>
-						
-					</a><?=order_by_reverse('recurrency_when_month')?>
-					
-				</th>
-				
-				
-				<th nowrap>
-					
 					<a href="<?=order_by_url('recurrency_description')?>">
 					
 						<?=$this->lang->line('recurrency_description')?>
@@ -238,7 +216,13 @@
 					</a><?=order_by_reverse('recurrency_description')?>
 					
 				</th>
-				
+
+				<th nowrap>
+
+					<?=$this->lang->line('recurrency')?>
+					
+				</th>
+						
 				
 				<th nowrap>
 					

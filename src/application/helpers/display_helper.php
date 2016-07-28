@@ -6,19 +6,47 @@
 *
 * ======================================================== */
 
+if( ! function_exists('explain_recurrency')){
+
+	function explain_recurrency($day, $month=false)
+	{
+
+		$CI =& get_instance();
+		
+		if($month){
+		
+			$explanation = $CI->lang->line('yearly').' ';
+			$explanation .= $CI->lang->line('on_day').' ';
+			$explanation .= $day.'/'.$CI->lang->line('month_'.$month);
+			
+		}else{
+		
+			$explanation = $CI->lang->line('monthly').' ';
+			$explanation .= $CI->lang->line('on_day').' ';
+			$explanation .= $day;
+		}
+		
+		
+		return $explanation;
+	
+		
+	}
+	
+}
+
 
 if( ! function_exists('format_id')){
 
-	function format_id($int)
+	function format_id($int, $prepend='#')
 	{
 
 		if(strlen($int)<4){
 		
-			return str_pad($int, 4, 0, STR_PAD_LEFT);
+			return $prepend.str_pad($int, 4, 0, STR_PAD_LEFT);
 			
 		}
 		
-		return $int;
+		return $prepend.$int;
 	
 		
 	}
@@ -334,7 +362,13 @@ if ( ! function_exists('truncate_string')){
 /* ======================================================== */
 if ( ! function_exists('get_display_value')){
 
-	function get_display_value($var=false,$default_value=false) {
+	function get_display_value($var=false,$default_value=false,$show_default_if_zero=false,$prepend=false,$append=false) {
+			
+		if($show_default_if_zero AND $var === '0'){
+		
+			return $default_value;
+		
+		}
 			
 		if( (!$var OR trim($var)=="") AND $var !== '0') {
 		
@@ -342,7 +376,7 @@ if ( ! function_exists('get_display_value')){
 			
 		}else{
 		
-			return $var;
+			return $prepend.$var.$append;
 		
 		}
 

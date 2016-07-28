@@ -7,11 +7,11 @@
 							<?=format_id($item->invoice_id)?>
 						</a></td>
 <td class="hidden-xs"><?=character_limiter(strip_tags($item->account_title), 45)?></td>
-<td class="hidden-xs"><?=character_limiter(strip_tags($item->invoice_amount), 45)?></td>
+<td class="hidden-xs"><?=format_currency($item->invoice_amount)?></td>
 <td class="hidden-xs"><?=character_limiter(strip_tags($item->invoice_description), 45)?></td>
-<td class="hidden-xs"><?=human_date($item->invoice_created_date);?></td>
 <td class="hidden-xs"><?=human_date($item->invoice_due_date);?></td>
 <td class="hidden-xs"><?=human_date($item->invoice_paid_date);?></td>
+<td class="hidden-xs"><?=human_date($item->invoice_created_date, false, false, true);?></td>
 		
 		
 		<td width="1%" class="center" nowrap>

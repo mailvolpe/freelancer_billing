@@ -207,17 +207,6 @@
 				
 				<th nowrap>
 					
-					<a href="<?=order_by_url('invoice_created_date')?>">
-					
-						<?=$this->lang->line('invoice_created_date')?>
-						
-					</a><?=order_by_reverse('invoice_created_date')?>
-					
-				</th>
-				
-				
-				<th nowrap>
-					
 					<a href="<?=order_by_url('invoice_due_date')?>">
 					
 						<?=$this->lang->line('invoice_due_date')?>
@@ -234,6 +223,16 @@
 						<?=$this->lang->line('invoice_paid_date')?>
 						
 					</a><?=order_by_reverse('invoice_paid_date')?>
+					
+				</th>
+				
+				<th nowrap>
+					
+					<a href="<?=order_by_url('invoice_created_date')?>">
+					
+						<?=$this->lang->line('invoice_created_date')?>
+						
+					</a><?=order_by_reverse('invoice_created_date')?>
 					
 				</th>
 				

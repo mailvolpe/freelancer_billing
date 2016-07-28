@@ -27,18 +27,22 @@ $lang['invoice_due_date']="Vencimento";
 $lang['invoice_paid_date']="Pagamento";
 $lang['invoice_id']="Número da Fatura";
 
-$lang['recurrencies']="Planos";
-$lang['recurrency']="Plano";
+$lang['recurrencies']="Recorrências";
+$lang['recurrency']="Recorrência";
 $lang['recurrency_id']="Identificador do Plano";
 $lang['recurrency_account_id']="Cliente";
 $lang['recurrency_amount']="Valor";
 $lang['recurrency_when_day']="Dia do vencimento";
 $lang['recurrency_when_month']="Definir mês";
 $lang['recurrency_description']="Descrição";
-$lang['recurrency_limit']="Repetições";
+$lang['recurrency_limit']="Limite de Repetições";
+$lang['recurrency_iterations']="vezes";
+$lang['unlimited_recurrency']="Sempre";
 $lang['recurrency_start']="Ativo";
 
-
+$lang['monthly'] = "Mensal";
+$lang['yearly'] = "Anual";
+$lang['on_day'] = "todo dia";
 $lang['every_month'] = "Todo mês";
 $lang['db_now'] = "Hora Atual";
 
@@ -195,18 +199,18 @@ $lang['october'] = "Outubro";
 $lang['november'] = "Novembro";
 $lang['december'] = "Dezembro";
 
-$lang['jan'] = "Jan";
-$lang['feb'] = "Fev";
-$lang['mar'] = "Mar";
-$lang['apr'] = "Abr";
-$lang['may'] = "Maio";
-$lang['jun'] = "Jun";
-$lang['jul'] = "Jul";
-$lang['aug'] = "Ago";
-$lang['sep'] = "Set";
-$lang['oct'] = "Out";
-$lang['nov'] = "Nov";
-$lang['dec'] = "Dez";
+$lang['month_1'] = $lang['jan'] = "Jan";
+$lang['month_2'] = $lang['feb'] = "Fev";
+$lang['month_3'] = $lang['mar'] = "Mar";
+$lang['month_4'] = $lang['apr'] = "Abr";
+$lang['month_5'] = $lang['may'] = "Maio";
+$lang['month_6'] = $lang['jun'] = "Jun";
+$lang['month_7'] = $lang['jul'] = "Jul";
+$lang['month_8'] = $lang['aug'] = "Ago";
+$lang['month_9'] = $lang['sep'] = "Set";
+$lang['month_10'] = $lang['oct'] = "Out";
+$lang['month_11'] = $lang['nov'] = "Nov";
+$lang['month_12'] = $lang['dec'] = "Dez";
 
 $lang['monday'] = "Segunda";
 $lang['tuesday'] = "Terça";

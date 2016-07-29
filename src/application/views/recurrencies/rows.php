@@ -1,4 +1,4 @@
-<? foreach($itens as $item){ ?>
+<?php foreach($itens as $item){ ?>
 
 	<tr>
 		

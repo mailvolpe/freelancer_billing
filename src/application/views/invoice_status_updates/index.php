@@ -4,10 +4,16 @@
 	
 			
 			<h3>
-			
+		
+				<a href="invoices/view/<?=$item->invoice_id?>">
+					<?=$this->lang->line('invoice')?>
+					<?=format_id($item->invoice_id)?>			
+				</a>
+		
+				-
+		
 				<?=$this->lang->line('invoice_status_updates')?>
-
-				
+		
 			</h3>
 		
 		
@@ -119,7 +125,7 @@
 
 	<div class="col-sm-2 col-sm-offset-8 col-xs-6">
 
-		<a href="<?=base_url().'invoice_status_updates/create'?>" type="button" class="btn btn-block btn-primary ">
+		<a href="<?=base_url().'invoice_status_updates/create/'.$item->invoice_id?>" type="button" class="btn btn-block btn-primary ">
 		
 				<?=$this->lang->line('create')?>
 			
@@ -147,28 +153,7 @@
 		
 			<tr>
 			
-				
-				<th nowrap>
-					
-					<a href="<?=order_by_url('invoice_status_update_id')?>">
-					
-						<?=$this->lang->line('invoice_status_update_id')?>
-						
-					</a><?=order_by_reverse('invoice_status_update_id')?>
-					
-				</th>
-				
-				
-				<th nowrap>
-					
-					<a href="<?=order_by_url('invoice_status_update_invoice_id')?>">
-					
-						<?=$this->lang->line('invoice_status_update_invoice_id')?>
-						
-					</a><?=order_by_reverse('invoice_status_update_invoice_id')?>
-					
-				</th>
-				
+								
 				
 				<th nowrap>
 					
@@ -192,16 +177,6 @@
 				</th>
 				
 				
-				<th nowrap>
-					
-					<a href="<?=order_by_url('invoice_status_update_transaction')?>">
-					
-						<?=$this->lang->line('invoice_status_update_transaction')?>
-						
-					</a><?=order_by_reverse('invoice_status_update_transaction')?>
-					
-				</th>
-				
 				
 				<th nowrap>
 					
@@ -213,6 +188,15 @@
 					
 				</th>
 				
+				<th nowrap>
+					
+					<a href="<?=order_by_url('invoice_status_update_transaction')?>">
+					
+						<?=$this->lang->line('invoice_status_update_transaction')?>
+						
+					</a><?=order_by_reverse('invoice_status_update_transaction')?>
+					
+				</th>				
 								
 				<th width=1%>
 				

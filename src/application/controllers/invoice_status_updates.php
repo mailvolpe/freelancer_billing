@@ -16,6 +16,10 @@ class Invoice_status_updates extends CI_Controller {
 		$this->load->model("Invoice");
 		
 		$this->load->model("Invoice_status_update");
+		
+		$this->load->vars(array("gateways"=>$this->Invoice_status_update->get_invoice_status_gateways()));
+		
+		$this->load->vars(array("statuses"=>$this->Invoice_status_update->get_invoice_status_update_statuses()));		
 
 	}
 
@@ -85,10 +89,16 @@ class Invoice_status_updates extends CI_Controller {
 
 	}	
 	
-	public function create(){
+	public function create($invoice_id){
 
+		if(!$invoice = $this->Invoice->get_item($invoice_id)){
+			not_allowed();
+		}
+	
 		if($_SERVER['REQUEST_METHOD'] == "POST"){
 
+			$_POST['invoice_status_update_invoice_id'] = $invoice->invoice_id;
+		
 			try{
 
 				$item = $this->validate();
@@ -99,7 +109,7 @@ class Invoice_status_updates extends CI_Controller {
 					
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect('invoice_status_updates/view/'.$invoice_status_update_id, 'location');
+					redirect('invoices/view/'.$invoice->invoice_id, 'location');
 
 				# API option: return $create
 

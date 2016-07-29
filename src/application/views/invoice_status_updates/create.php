@@ -19,22 +19,6 @@
 
 <form method="post" action="" class="form-horizontal" autocomplete="on" role="form" enctype="multipart/form-data">
 
-	
-	<div class="form-group">
-
-		<label class="col-sm-3 control-label">
-
-			<?=$this->lang->line('invoice_status_update_invoice_id')?>
-
-		</label>
-
-		<div class="col-sm-9">
-
-			<?=number_field('invoice_status_update_invoice_id', set_value('invoice_status_update_invoice_id'));?>
-
-		</div>
-
-	</div>
 
 	<div class="form-group">
 
@@ -46,7 +30,7 @@
 
 		<div class="col-sm-9">
 
-			<?=datetime_field('invoice_status_update_datetime', set_value('invoice_status_update_datetime'));?>
+			<?=datetime_field('invoice_status_update_datetime', set_value('invoice_status_update_datetime')?set_value('invoice_status_update_datetime'):db_now());?>
 
 		</div>
 
@@ -62,12 +46,28 @@
 
 		<div class="col-sm-9">
 
-			<?=input_field('invoice_status_update_gateway', set_value('invoice_status_update_gateway'));?>
-
+			<?=select_field('invoice_status_update_gateway', $gateways, set_value('invoice_status_update_gateway'))?>			
+			
 		</div>
 
 	</div>
 
+	<div class="form-group">
+
+		<label class="col-sm-3 control-label">
+
+			<?=$this->lang->line('invoice_status_update_status_code')?>
+
+		</label>
+
+		<div class="col-sm-9">
+		
+			<?=select_field('invoice_status_update_status_code', $statuses, set_value('invoice_status_update_status_code'))?>
+
+		</div>
+
+	</div>
+	
 	<div class="form-group">
 
 		<label class="col-sm-3 control-label">
@@ -82,23 +82,7 @@
 
 		</div>
 
-	</div>
-
-	<div class="form-group">
-
-		<label class="col-sm-3 control-label">
-
-			<?=$this->lang->line('invoice_status_update_status_code')?>
-
-		</label>
-
-		<div class="col-sm-9">
-
-			<?=input_field('invoice_status_update_status_code', set_value('invoice_status_update_status_code'));?>
-
-		</div>
-
-	</div>
+	</div>	
 	
 	<div class="row">
 	

@@ -1,13 +1,22 @@
 <?php
 
 $lang['invoice_status_updates']="Atualizações de Status";
-$lang['invoice_status_update']="Atualização de Status";
+$lang['invoice_status_update']="Status";
 $lang['invoice_status_update_id']="Identificador da atualização";
 $lang['invoice_status_update_invoice_id']="Fatura";
-$lang['invoice_status_update_datetime']="Atualizado em";
+$lang['invoice_status_update_datetime']="Data da atualização";
 $lang['invoice_status_update_gateway']="Meio de Pagamento";
 $lang['invoice_status_update_transaction']="Identificador da transação";
 $lang['invoice_status_update_status_code']="Status";
+
+$lang['paid_status'] = "Pago";
+$lang['pending_status'] = "Pendente";
+$lang['cancelled_status'] = "Cancelado";
+
+$lang['offline_payment'] = "Depósito / Transferência";
+$lang['pagseguro'] = "PagSeguro";
+$lang['paypal'] = "Paypal";
+$lang['stripe'] = "Stripe";
 
 $lang['pay_invoice']="Pagar fatura";
 
@@ -136,14 +145,14 @@ $lang['search'] = "Busca";
 $lang['create'] = "Cadastrar";
 $lang['view'] = "Ver";
 $lang['close'] = "Fechar";
-$lang['update'] = "Atualizar";
+$lang['update'] = "Editar";
 $lang['print'] = "Imprimir";
 $lang['remove'] = "Remover";
 $lang['pick'] = "Selecionar";
 $lang['add'] = "Adicionar";
 $lang['change'] = "Modificar";
 $lang['undefined'] = "Não informado";
-
+$lang['back'] = "Voltar";
 
 $lang['range_min'] = "a partir de`";
 $lang['range_max'] = "até";

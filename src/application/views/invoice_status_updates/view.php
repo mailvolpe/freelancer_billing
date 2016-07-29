@@ -7,7 +7,7 @@
 		<h3>
 
 			<?=$this->lang->line('view').' '.$this->lang->line('invoice_status_update')?>
-
+		
 			
 		</h3>
 
@@ -22,27 +22,7 @@
 
 	<div class="form-horizontal col-sm-8 col-xs-12">
 
-	
-		<div class="form-group">
 
-			<label class="col-sm-5 control-label">
-
-				<?=$this->lang->line('invoice_status_update_invoice_id')?>
-
-			</label>
-
-			<div class="col-sm-7">
-
-				<p class="form-control-static">
-				
-					<?=$item->invoice_status_update_invoice_id?>
-
-				</p>
-
-			</div>
-
-		</div>
-	
 		<div class="form-group">
 
 			<label class="col-sm-5 control-label">
@@ -55,7 +35,7 @@
 
 				<p class="form-control-static">
 				
-					<?=human_date($item->invoice_status_update_datetime);?>
+					<?=human_date($item->invoice_status_update_datetime, true);?>
 
 				</p>
 
@@ -75,14 +55,35 @@
 
 				<p class="form-control-static">
 				
-					<?=$item->invoice_status_update_gateway?>
+					<?=$gateways[$item->invoice_status_update_gateway]?>
 
 				</p>
 
 			</div>
 
 		</div>
+
 	
+		<div class="form-group">
+
+			<label class="col-sm-5 control-label">
+
+				<?=$this->lang->line('invoice_status_update_status_code')?>
+
+			</label>
+
+			<div class="col-sm-7">
+
+				<p class="form-control-static">
+				
+					<?=$statuses[$item->invoice_status_update_status_code]?>
+
+				</p>
+
+			</div>
+
+		</div>
+
 		<div class="form-group">
 
 			<label class="col-sm-5 control-label">
@@ -102,32 +103,15 @@
 			</div>
 
 		</div>
-	
-		<div class="form-group">
-
-			<label class="col-sm-5 control-label">
-
-				<?=$this->lang->line('invoice_status_update_status_code')?>
-
-			</label>
-
-			<div class="col-sm-7">
-
-				<p class="form-control-static">
-				
-					<?=$item->invoice_status_update_status_code?>
-
-				</p>
-
-			</div>
-
-		</div>
 		
 	</div>   
 
 
 	<div class="col-sm-4 col-xs-12">
 
+		<a class="btn btn-block btn-default view-option-link" href="invoice_status_updates/index/<?=$item->invoice_status_update_invoice_id?>">
+			<?=$this->lang->line('back')?>
+		</a>	
 		
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoice_status_updates/update/<?=$item->invoice_status_update_id?> " >
 

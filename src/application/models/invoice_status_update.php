@@ -9,11 +9,23 @@ class Invoice_status_update extends CI_Model {
 	 
     }
 
+	function get_invoice_status_gateways(){
+	
+		return array(
+			"0"=>$this->lang->line('offline_payment'),
+			"1"=>$this->lang->line('PagSeguro'),
+			"2"=>$this->lang->line('PayPal'),
+			"3"=>$this->lang->line('Stripe'),
+		);
+	
+	}	
+	
 	function get_invoice_status_update_statuses(){
 	
 		return array(
-			"0"=>"unpaid",
-			"1"=>"paid"
+			"0"=>$this->lang->line('pending_status'),
+			"1"=>$this->lang->line('paid_status'),
+			"2"=>$this->lang->line('cancelled_status'),
 		);
 	
 	}

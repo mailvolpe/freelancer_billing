@@ -9,7 +9,6 @@ class Invoice extends CI_Model {
 	 
     }
 
-
 	# Index #
 	
     function index($invoice_account_id=false){

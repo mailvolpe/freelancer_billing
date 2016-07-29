@@ -16,50 +16,16 @@ class Invoices extends CI_Controller {
 		$this->load->model("Invoice");
 		
 		$this->load->model("Invoice_status_update");
-
+		
+		$this->load->vars(array("gateways"=>$this->Invoice_status_update->get_invoice_status_gateways()));
+		
+		$this->load->vars(array("statuses"=>$this->Invoice_status_update->get_invoice_status_update_statuses()));
+		
+		
 	}
 
 	
-	
-	public function pay($invoice_id, $gateway_id){
 
-		if($gateway_id==2){
-			not_allowed($this->lang->line('not_implemented'));
-		}
-	
-		/*
-		$this->load->library('gateway');
-	
-		$invoice = $this->Invoice->get_item($invoice_id);
-	
-		$paymentRequest = new paymentRequest();			
-
-		$paymentRequest->setSenderName($invoice->account_title);  
-		
-		$paymentRequest->setSenderEmail($invoice->account_email); 
-	
-		$paymentRequest->addItem(format_id($invoice->invoice_id), $invoice->invoice_description, 1, $invoice->invoice_amount);
-		
-		$paymentRequest->setCurrency("BRL");
-		
-		$paymentRequest->setReference(format_id($invoice->invoice_id));
-						
-		$url = base_url()."updates/notification_status_update";  
-		$paymentRequest->setNotificationURL($url);  		
-		
-		$gateway = new paymentGateway('pagseguro', $this->config->item('credentials_pagseguro'));
-	
-		$result = $gateway->register($paymentRequest);
-		
-		if(isset($result->checkout_url)){
-		
-			redirect($result->checkout_url, 'location');
-			
-		}
-		*/
-	
-	}
-	
 	public function index($invoice_account_id=false){
 
 		$data['itens'] = $this->Invoice->index($invoice_account_id);

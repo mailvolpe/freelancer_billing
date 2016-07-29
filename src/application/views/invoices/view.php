@@ -143,14 +143,14 @@
 						
 							<p>
 							
-								<span class="label label-primary"><?=$this->lang->line($status->invoice_status_update_status_code)?></span>
-								<?=human_date($status->invoice_status_update_datetime)?>
+								<span class="label label-primary"><?=$statuses[$status->invoice_status_update_status_code]?></span>
+								<?=human_date($status->invoice_status_update_datetime, true)?>
 								
 								<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
 								
 								<div class="small" style="display:none;" id="status_update_info_<?=$status->invoice_status_update_id?>">
 								
-								<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$status->invoice_status_update_gateway?> 
+								<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$gateways[$status->invoice_status_update_gateway]?> 
 								
 								<br>
 								
@@ -160,10 +160,6 @@
 							</p>
 							
 						<?}?>
-						
-					<a class="" href="invoices/check/<?=$status->invoice_status_update_id?>">	
-						<?=$this->lang->line('check_now')?>
-					</a>	
 											
 					</div>
 
@@ -171,7 +167,7 @@
 
 			</div>
 			
-		<?}else{?>
+		<?}elseif(!$item->invoice_paid_date){?>
 		
 			<div class="form-group">
 
@@ -185,13 +181,18 @@
 
 					<div class="form-control-static">
 						
-						<a class="btn btn-sm  btn-default" href="invoices/pay/<?=$item->invoice_id?>/1">	
+						<a class="btn btn-sm  btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
 							<i class="fa fa-money"></i> <?=$this->lang->line('PagSeguro')?>
 						</a>	
 								
-						<a class="btn btn-sm btn-default" href="invoices/pay/<?=$item->invoice_id?>/2">	
+						<a class="btn btn-sm btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
 							<i class="fa fa-paypal"></i> <?=$this->lang->line('PayPal')?>
 						</a>									
+						
+						<div id="implement_payment" style="display:none;">
+							<br><p>Quando o cliente clicar nesse botão de pagamento ele já deve ser redirecionado para o PagSeguro ou Paypal. Uma url de retorno dos dados e o identificador também deve ser passada para que o sistema possa enviar informações sobre a transação de volta para o sistema.</p>
+						</div>
+						
 					</div>
 
 				</div>
@@ -226,11 +227,6 @@
 
 	<div class="col-sm-4 col-xs-12">
 	
-		<a class="btn btn-block btn-default view-option-link" target="_blank" href="<?=base_url()?>invoices/pay/<?=$item->invoice_id?> " >
-
-			<?=$this->lang->line('pay')?>
-		
-		</a>	
 	
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoice_status_updates/index/<?=$item->invoice_id?> " >
 

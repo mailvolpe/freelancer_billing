@@ -46,7 +46,7 @@ function display_error($field_name){
 
 	if(form_error($field_name)){
 
-	echo '<p class="help-block">';
+	echo '<p class="help-block form-error">';
 
 	 	echo form_error($field_name);
 	 	

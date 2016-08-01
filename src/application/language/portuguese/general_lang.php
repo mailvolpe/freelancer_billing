@@ -56,6 +56,7 @@ $lang['recurrency_start']="Ativo";
 
 $lang['monthly'] = "Mensal";
 $lang['yearly'] = "Anual";
+$lang['yearly_recurrency_help'] = "Para recorrência anual";
 $lang['on_day'] = "todo dia";
 $lang['every_month'] = "Todo mês";
 $lang['db_now'] = "Hora Atual";
@@ -127,8 +128,8 @@ $lang['unblock'] = "Desbloquear";
 $lang['change_password'] = "Modificar senha";
 $lang['password'] = "Senha";
 $lang['account_password'] = "Senha da conta";
-$lang['active_recurrencies']="Recorrencias ativas";
-$lang['unpaid_invoices']="Faturas pendentes";
+$lang['active_recurrencies']="Ativas";
+$lang['unpaid_invoices']="Pendentes";
 
 $lang['yes'] = "Sim";
 $lang['no'] = "Não";

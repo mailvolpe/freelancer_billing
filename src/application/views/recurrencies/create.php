@@ -81,7 +81,7 @@
 		<div class="col-sm-9">
 
 			<?=number_field('recurrency_when_month', set_value('recurrency_when_month'));?>
-
+			<p class="help-block"><?=$this->lang->line('yearly_recurrency_help')?></p>
 		</div>
 
 	</div>

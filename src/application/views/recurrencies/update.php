@@ -92,8 +92,9 @@
 
 
 			<?=number_field('recurrency_when_month', set_value('recurrency_when_month', $item->recurrency_when_month));?>
-
-			</div>
+			<p class="help-block"><?=$this->lang->line('yearly_recurrency_help')?></p>
+			
+		</div>
 
 	</div>
 

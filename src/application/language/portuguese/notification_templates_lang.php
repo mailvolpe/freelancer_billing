@@ -1,5 +1,22 @@
 <?php
 
+	$lang['invoice_status_pending_overdue_notification_subject'] = "Aviso de fatura em atraso";
+
+	$lang['invoice_status_pending_overdue_notification'] = "
+	
+	<p>Olá {account_title},</p>
+
+	<p>A fatura {formatted_invoice_id} referente a <b>{invoice_description}</b> com vencimento para {formatted_invoice_due_date} encontra-se com o status de atrasada em nosso sistema de gestão.</p>
+
+	<p>Acesse <a href='{direct_link_url}'>este link para visualizar e pagar sua fatura</a>.</p>
+
+	<p>Acesse a área do cliente para realizar o pagamento ou desconsidere este aviso caso o mesmo já tenha sido realizado.</p>	
+	
+	<p>Atenciosamente,
+	";
+
+	/************************************************************************************/
+
 	$lang['password_recovery_subject'] = "Recuperação de Senha";
 
 	$lang['password_recovery'] = "

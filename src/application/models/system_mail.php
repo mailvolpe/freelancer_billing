@@ -12,6 +12,7 @@ class System_mail extends CI_Model {
 		$this->smtp_email = $this->config->item('smtp_email');
 		
 		$this->smtp_host =  $this->config->item('smtp_host');
+		$this->smtp_port =  $this->config->item('smtp_port');
 		$this->smtp_user =  $this->config->item('smtp_user');
 		$this->smtp_pass =  $this->config->item('smtp_pass');
 		
@@ -55,7 +56,7 @@ class System_mail extends CI_Model {
 	
 	}
 	
-	function send_notification_email($to, $subject, $body, $port='587', $debug=false){
+	function send_notification_email($to, $subject, $body, $debug=false, $auth=true){
 
 		$message = "<div style='width:450px; max-width:100%;'>";
 		$message .= $body;
@@ -63,18 +64,22 @@ class System_mail extends CI_Model {
 		$message .= '<br>'.$this->smtp_email.'</p>';
 		$message .= "</div>";
 
-		#EMAILS START
+		if(!$auth){
+			$mail_config['protocol'] = 'mail';
+		}else{
+			$mail_config['protocol'] = 'smtp';		
+			$mail_config['smtp_port'] = $this->smtp_port;
+			$mail_config['smtp_host'] = $this->smtp_host;
+			$mail_config['smtp_user'] = $this->smtp_user;
+			$mail_config['smtp_pass'] = $this->smtp_pass;		
+		}
 
-    	$this->email->clear();
-
-		$mail_config['protocol'] = 'smtp';
-		$mail_config['smtp_port'] = $port;
 		$mail_config['charset'] = 'utf-8';
 		$mail_config['mailtype'] = 'html';
 		
-		$mail_config['smtp_host'] = $this->smtp_host;
-		$mail_config['smtp_user'] = $this->smtp_user;
-		$mail_config['smtp_pass'] = $this->smtp_pass;	
+		#EMAILS START
+
+    	$this->email->clear();
 	
 		$this->email->initialize($mail_config);		
 

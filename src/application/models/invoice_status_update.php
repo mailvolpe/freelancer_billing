@@ -23,9 +23,9 @@ class Invoice_status_update extends CI_Model {
 	function get_invoice_status_update_statuses(){
 	
 		return array(
-			"0"=>$this->lang->line('pending_status'),
-			"1"=>$this->lang->line('paid_status'),
-			"2"=>$this->lang->line('cancelled_status'),
+			"0"=>$this->lang->line('invoice_status_update_pending'),
+			"1"=>$this->lang->line('invoice_status_update_paid'),
+			"2"=>$this->lang->line('invoice_status_update_cancelled'),
 		);
 	
 	}

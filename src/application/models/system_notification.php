@@ -9,7 +9,7 @@ class System_notification extends CI_Model {
     }
 
 
-    function notificate($to, $event_name, $data, $sendmail=true){
+    function notificate($to, $event_name, $data, $sendmail=true, $debug=false, $auth=true){
 
     	$this->load->language('notification_templates');
 
@@ -23,9 +23,9 @@ class System_notification extends CI_Model {
 
     	}
 
-    	if($sendmail){
+    	if($sendmail AND $to){
 
-    		$send_error = $this->System_mail->send_notification_email($to, $title, $message);
+    		$send_error = $this->System_mail->send_notification_email($to, $title, $message, $debug, $auth);
 
 			if( $send_error ){
 
@@ -37,7 +37,19 @@ class System_notification extends CI_Model {
 
 			}
 
-    	}
+    	}else{
+		
+			$notification = new stdClass;
+			
+			$notification->to = $to;
+			
+			$notification->subject = $title;
+			
+			$notification->message = $message;
+		
+			return $notification;
+		
+		}
 
     	
 

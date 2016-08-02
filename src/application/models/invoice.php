@@ -9,6 +9,38 @@ class Invoice extends CI_Model {
 	 
     }
 
+	function get_invoice_statuses(){
+	
+		$invoice_statuses = array(
+			0=>"invoice_status_pending",
+			1=>"invoice_status_paid",
+			2=>"invoice_status_pending_overdue"
+			
+		);
+	
+		return $invoice_statuses;
+	
+	
+	}
+	
+	function get_invoice_status($invoice){
+		
+		if($invoice->invoice_paid_date){
+		
+			return 1;
+		
+		}elseif($invoice->invoice_due_date <= db_now()){
+		
+			return 2;
+		
+		}else{
+		
+			return 0;
+		
+		}
+		
+	}
+	
 	# Index #
 	
     function index($invoice_account_id=false){
@@ -183,7 +215,31 @@ class Invoice extends CI_Model {
 
 			$result = $query->row_object();
 
-			return $result;	
+			$result->invoice_status = $this->get_invoice_status($result);
+			
+			#Adiciona os atributos já formatados ao item
+			
+			$item = new stdClass;
+			
+			foreach($result as $key => $value){
+			
+				$item->$key = $value;
+			
+				if($key === 'invoice_id'){$item->formatted_invoice_id = format_id($value);}
+				
+				if($key === 'invoice_created_date'){$item->formatted_invoice_created_date = human_date($value);}
+				
+				if($key === 'invoice_due_date'){$item->formatted_invoice_due_date = human_date($value);}
+				
+				if($key === 'invoice_paid_date'){$item->formatted_invoice_paid_date = human_date($value);}
+							
+				#Adiciona o link para acesso direto pela área do cliente
+				
+				$item->direct_link_url = 'LINK PARA A FATURA - IMPLEMENTAR EM invoice.php';
+				
+			}
+			
+			return $item;
 
 		}
 

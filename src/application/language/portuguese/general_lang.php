@@ -1,5 +1,10 @@
 <?php
 
+$lang['invoice_notification_preview'] = "Preview";
+$lang['invoice_status_pending_overdue']="Fatura em atraso";
+$lang['invoice_status_pending']="Fatura pendente";
+$lang['invoice_status_paid']="Fatura paga";
+
 $lang['invoice_status_updates']="Atualizações de Status";
 $lang['invoice_status_update']="Status";
 $lang['invoice_status_update_id']="Identificador da atualização";
@@ -9,9 +14,9 @@ $lang['invoice_status_update_gateway']="Meio de Pagamento";
 $lang['invoice_status_update_transaction']="Identificador da transação";
 $lang['invoice_status_update_status_code']="Status";
 
-$lang['paid_status'] = "Pago";
-$lang['pending_status'] = "Pendente";
-$lang['cancelled_status'] = "Cancelado";
+$lang['invoice_status_update_paid'] = "Pago";
+$lang['invoice_status_update_pending'] = "Pendente";
+$lang['invoice_status_update_cancelled'] = "Cancelado";
 
 $lang['offline_payment'] = "Depósito / Transferência";
 $lang['pagseguro'] = "PagSeguro";
@@ -25,7 +30,8 @@ $lang['invoice_notifications']="Notificações";
 $lang['invoice_notification_invoice_id']="Identificador da notificação";
 $lang['invoice_notification_type']="Tipo";
 $lang['invoice_notification_read']="Leitura";
-$lang['invoice_notification_read_ip']="IP utilizado ao ler notificação";
+$lang['invoice_notification_read_ip']="IP";
+$lang['invoice_notification_sent']="Data de envio";
 
 $lang['invoices']="Faturas";
 $lang['invoice']="Fatura";
@@ -154,6 +160,10 @@ $lang['add'] = "Adicionar";
 $lang['change'] = "Modificar";
 $lang['undefined'] = "Não informado";
 $lang['back'] = "Voltar";
+$lang['send'] = "Enviar";
+$lang['subject'] = "Assunto";
+$lang['to'] = "Para";
+
 
 $lang['range_min'] = "a partir de`";
 $lang['range_max'] = "até";

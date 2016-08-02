@@ -94,7 +94,22 @@ class Invoice_notification extends CI_Model {
 
 	# Create #
 
-	function create($item){
+	function create($item, $invoice){
+
+		$notification = $this->System_notification->notificate(
+			$invoice->account_email, 
+			$this->invoice_statuses[$invoice->invoice_status].'_notification', 
+			$invoice, 
+			true,
+			true,
+			true
+			);
+			
+		if($notification !== true){
+		
+			throw new Exception($notification);
+		
+		}
 
 		$insert = $this->db->insert('invoice_notifications', $item);
 

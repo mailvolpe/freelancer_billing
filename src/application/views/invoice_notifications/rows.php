@@ -1,16 +1,23 @@
 <? foreach($itens as $item){ ?>
 
 	<tr>
-		
+	
 		<td class="">
-						<a class="" href="<?=base_url()?>invoice_notifications/view/<?=$item->invoice_notification_id;?>">
-							<?=format_id($item->invoice_notification_id)?>
-						</a></td>
-<td class="hidden-xs"><?=character_limiter(strip_tags($item->invoice_notification_invoice_id), 45)?></td>
-<td class="hidden-xs"><?=character_limiter(strip_tags($item->invoice_notification_type), 45)?></td>
-<td class="hidden-xs"><?=human_date($item->invoice_notification_read);?></td>
-<td class="hidden-xs"><?=character_limiter(strip_tags($item->invoice_notification_read_ip), 45)?></td>
-		
+			<a class="" href="<?=base_url()?>invoice_notifications/view/<?=$item->invoice_notification_id;?>">
+				<?=human_date($item->invoice_notification_sent)?>
+			</a>
+		</td>
+	
+		<td>
+			<?=$this->lang->line($invoice_statuses[$item->invoice_notification_type])?>
+		</td>		
+	
+
+		<td class="hidden-xs">
+			<?=human_date($item->invoice_notification_read);?>
+			<?=character_limiter(strip_tags($item->invoice_notification_read_ip), 45)?>
+		</td>
+
 		
 		<td width="1%" class="center" nowrap>
 			

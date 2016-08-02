@@ -6,7 +6,14 @@
 
 		<h3>
 
-			<?=$this->lang->line('create').' '.$this->lang->line('invoice_notification')?>
+				<a href="invoices/view/<?=$invoice->invoice_id?>">
+					<?=$this->lang->line('invoice')?>
+					<?=format_id($invoice->invoice_id)?>			
+				</a>
+		
+				-		
+		
+			<?=$this->lang->line('send').' '.$this->lang->line('invoice_notification')?>
 
 		</h3>
 
@@ -20,21 +27,6 @@
 <form method="post" action="" class="form-horizontal" autocomplete="on" role="form" enctype="multipart/form-data">
 
 	
-	<div class="form-group">
-
-		<label class="col-sm-3 control-label">
-
-			<?=$this->lang->line('invoice_notification_invoice_id')?>
-
-		</label>
-
-		<div class="col-sm-9">
-
-			<?=number_field('invoice_notification_invoice_id', set_value('invoice_notification_invoice_id'));?>
-
-		</div>
-
-	</div>
 
 	<div class="form-group">
 
@@ -46,7 +38,9 @@
 
 		<div class="col-sm-9">
 
-			<?=input_field('invoice_notification_type', set_value('invoice_notification_type'));?>
+			<p class="form-control-static">
+				<?=$this->lang->line($invoice_statuses[$invoice->invoice_status]);?>
+			</p>
 
 		</div>
 
@@ -56,29 +50,53 @@
 
 		<label class="col-sm-3 control-label">
 
-			<?=$this->lang->line('invoice_notification_read')?>
+			<?=$this->lang->line('to')?>
 
 		</label>
 
 		<div class="col-sm-9">
 
-			<?=datetime_field('invoice_notification_read', set_value('invoice_notification_read'));?>
+			<p class="form-control-static">
+				<?=$notification->to;?>
+			</p>
 
 		</div>
 
-	</div>
-
+	</div>		
+	
 	<div class="form-group">
 
 		<label class="col-sm-3 control-label">
 
-			<?=$this->lang->line('invoice_notification_read_ip')?>
+			<?=$this->lang->line('subject')?>
 
 		</label>
 
 		<div class="col-sm-9">
 
-			<?=input_field('invoice_notification_read_ip', set_value('invoice_notification_read_ip'));?>
+			<p class="form-control-static">
+				<?=$notification->subject;?>
+			</p>
+
+		</div>
+
+	</div>	
+	
+	<div class="form-group">
+
+		<label class="col-sm-3 control-label">
+
+			<?=$this->lang->line('invoice_notification_preview')?>
+
+		</label>
+
+		<div class="col-sm-9">
+
+			<div class="notification_preview">
+			
+				<?=$notification->message;?>
+				
+			</div>
 
 		</div>
 
@@ -106,7 +124,7 @@
 
 					<button type="submit" class="btn btn-primary btn-block">
 
-						<?=$this->lang->line('create').' '.$this->lang->line('invoice_notification')?>
+						<?=$this->lang->line('send').' '.$this->lang->line('invoice_notification')?>
 
 					</button>
 

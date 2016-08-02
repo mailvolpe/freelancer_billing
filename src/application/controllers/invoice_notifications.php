@@ -13,13 +13,23 @@ class Invoice_notifications extends CI_Controller {
 
 		requires_session();
 		
+		$this->load->model("Invoice");
+		
 		$this->load->model("Invoice_notification");
 
+		$this->invoice_statuses = $this->Invoice->get_invoice_statuses();
+		
+		$this->load->vars(array("invoice_statuses" => $this->invoice_statuses));
+		
 	}
 
 
-	public function index(){
+	public function index($invoice_id){
 
+		if(!$data['invoice'] = $this->Invoice->get_item($invoice_id)){
+			not_allowed();
+		}
+	
 		$data['itens'] = $this->Invoice_notification->index();
 
 		$this->load->vars(array("page" => "invoice_notifications/index"));
@@ -46,21 +56,39 @@ class Invoice_notifications extends CI_Controller {
 
 	}	
 	
-	public function create(){
+	public function create($invoice_id){
 
+		if(!$data['invoice'] = $invoice = $this->Invoice->get_item($invoice_id, true)){
+			not_allowed();
+		}	
+	
+		$data['notification'] = $notification = $this->System_notification->notificate(
+			$data['invoice']->account_email, 
+			$this->invoice_statuses[$data['invoice']->invoice_status].'_notification', 
+			$data['invoice'], 
+			false
+			);
+	
 		if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 			try{
 
+				$_POST['invoice_notification_invoice_id'] = $data['invoice']->invoice_id;
+				
+				$_POST['invoice_notification_type'] = $data['invoice']->invoice_status;
+				
+				$_POST['invoice_notification_sent'] = db_now();
+				
+				
 				$item = $this->validate();
-
-				$invoice_notification_id = $this->Invoice_notification->create($item);
-
+				
+				$invoice_notification_id = $this->Invoice_notification->create($item, $invoice);
+				
 				# GUI option: redirects
 					
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect('invoice_notifications/view/'.$invoice_notification_id, 'location');
+					redirect('invoice_notifications/index/'.$invoice_id, 'location');
 
 				# API option: return $create
 
@@ -74,11 +102,11 @@ class Invoice_notifications extends CI_Controller {
 
 		$this->load->vars(array("page"=>"invoice_notifications/create"));
 
-		$this->load->view('template/template');
+		$this->load->view('template/template', $data);
 
 	}
 
-
+	/*
 	public function update($invoice_notification_id){
 
 		$item = $this->Invoice_notification->get_item($invoice_notification_id); # Security check
@@ -114,7 +142,7 @@ class Invoice_notifications extends CI_Controller {
 		$this->load->view('template/template', array('item'=>$item));
 
 	}
-
+	*/
 
 	function validate($fields = false){
 
@@ -123,7 +151,7 @@ class Invoice_notifications extends CI_Controller {
 			array ( 
 					"field"=>"invoice_notification_invoice_id", 
 					"label"=>"lang:invoice_notification_invoice_id", 
-					"rules"=>"trim"
+					"rules"=>"required|trim"
 				),
 				
 								
@@ -135,17 +163,12 @@ class Invoice_notifications extends CI_Controller {
 				
 								
 				array ( 
-					"field"=>"invoice_notification_read", 
-					"label"=>"lang:invoice_notification_read", 
-					"rules"=>"trim"
-				),
+					"field"=>"invoice_notification_sent", 
+					"label"=>"lang:invoice_notification_sent", 
+					"rules"=>"required|trim"
+				)
 				
 								
-				array ( 
-					"field"=>"invoice_notification_read_ip", 
-					"label"=>"lang:invoice_notification_read_ip", 
-					"rules"=>"trim"
-				)
 		);
 
 		if(!$fields){$fields = $all_fields;}

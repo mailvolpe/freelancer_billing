@@ -45,28 +45,31 @@
 
 		</div>
 
-		<div class="form-group">
+		<?if($item->invoice_recurrency_id){?>
+			<div class="form-group">
 
-			<label class="col-sm-5 control-label">
+				<label class="col-sm-5 control-label">
 
-				<?=$this->lang->line('invoice_recurrency_id')?>
+					<?=$this->lang->line('invoice_recurrency_id')?>
 
-			</label>
+				</label>
 
-			<div class="col-sm-7">
+				<div class="col-sm-7">
 
-				<p class="form-control-static">
-				
-					<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->invoice_recurrency_id;?>">
-						<?=format_id($item->invoice_recurrency_id)?>
-					</a>
+					<p class="form-control-static">
+					
+						<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->invoice_recurrency_id;?>">
+							<?=format_id($item->invoice_recurrency_id)?>
+						</a>
 
-				</p>
+					</p>
+
+				</div>
 
 			</div>
-
-		</div>
-		
+		<?}?>
+	
+			
 		<div class="form-group">
 
 			<label class="col-sm-5 control-label">
@@ -86,6 +89,31 @@
 			</div>
 
 		</div>
+	
+		<div class="form-group">
+
+			<label class="col-sm-5 control-label">
+
+				<?=$this->lang->line('invoice_status')?>
+
+			</label>
+
+			<div class="col-sm-7">
+
+				<p class="form-control-static">
+				
+					<? $item_status = $this->Invoice->get_invoice_status($item);  ?>
+					<?if($item->invoice_status==2){?>
+						<span class="text-danger bold"><?=$this->lang->line('invoice_status_pending_overdue');?></span>
+					<?}elseif($item->invoice_status==1){?>
+						<span class="text-success bold"><?=$this->lang->line('invoice_status_paid');?></span>
+					<?}?>		
+
+				</p>
+
+			</div>
+
+		</div>	
 	
 		<div class="form-group">
 

@@ -17,6 +17,9 @@ class Account extends CI_Model {
 		
 		$this->db->where('recurrency_start', 1);
 
+		//Gerou menos que o limite de faturas geradas pela recorrencias
+		$this->db->where(' ( recurrency_limit=0 OR (SELECT count(*) FROM invoices WHERE invoice_recurrency_id = recurrencies.recurrency_id) < recurrencies.recurrency_limit )', null, false);				
+		
 		$query = $this->db->get('recurrencies');
 		
 		if($query->num_rows()>0){

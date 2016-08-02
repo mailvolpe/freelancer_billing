@@ -47,11 +47,11 @@
 		
 		
 		<td class="">
-			<a href="recurrencies/index/<?=$item->account_id?>"><?=$this->lang->line('active_recurrencies')?> (<?=$this->Account->count_active_recurrencies($item->account_id)?>)</div>
+			<a href="recurrencies/index/<?=$item->account_id?>"><?=$this->Account->count_active_recurrencies($item->account_id)?></div>
 		</td>		
 
 		<td class="">
-			<a href="invoices/index/<?=$item->account_id?>"><?=$this->lang->line('unpaid_invoices')?> (<?=$this->Account->count_unpaid_invoices($item->account_id)?>)</div>
+			<a href="invoices/index/<?=$item->account_id?>"><?=$this->Account->count_unpaid_invoices($item->account_id)?></div>
 		</td>		
 		
 

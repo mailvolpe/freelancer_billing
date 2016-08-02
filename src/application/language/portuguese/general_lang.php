@@ -4,6 +4,7 @@ $lang['invoice_notification_preview'] = "Preview";
 $lang['invoice_status_pending_overdue']="Fatura em atraso";
 $lang['invoice_status_pending']="Fatura pendente";
 $lang['invoice_status_paid']="Fatura paga";
+$lang['invoice_status']="Status";
 
 $lang['invoice_status_updates']="Atualizações de Status";
 $lang['invoice_status_update']="Status";
@@ -139,8 +140,8 @@ $lang['unblock'] = "Desbloquear";
 $lang['change_password'] = "Modificar senha";
 $lang['password'] = "Senha";
 $lang['account_password'] = "Senha da conta";
-$lang['active_recurrencies']="Ativas";
-$lang['unpaid_invoices']="Pendentes";
+$lang['active_recurrencies']="Recorrências Ativas";
+$lang['unpaid_invoices']="Faturas Pendentes";
 
 $lang['yes'] = "Sim";
 $lang['no'] = "Não";

@@ -220,13 +220,13 @@
 				
 				<th nowrap>
 					
-					<?=$this->lang->line('recurrencies')?>
+					<?=$this->lang->line('active_recurrencies')?>
 					
 				</th>
 				
 				<th nowrap>
 					
-					<?=$this->lang->line('invoices')?>
+					<?=$this->lang->line('unpaid_invoices')?>
 					
 				</th>				
 				

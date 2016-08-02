@@ -142,12 +142,22 @@
 				
 	</div>
 	
-
-	<div class="col-sm-2 col-sm-offset-8 col-xs-6">
+	<div class="col-sm-2 col-sm-offset-6 col-xs-3">
 
 		<a href="<?=base_url().'recurrencies/create'?>" type="button" class="btn btn-block btn-primary ">
 		
 				<?=$this->lang->line('create')?>
+			
+		</a>		
+
+	</div>	
+	
+	
+	<div class="col-sm-2 col-sm-offset-0 col-xs-3">
+
+		<a href="<?=base_url().'recurrencies/generate_invoices'?>" type="button" class="btn btn-block btn-success ">
+		
+				<?=$this->lang->line('generate_invoices')?>
 			
 		</a>		
 
@@ -234,6 +244,11 @@
 					
 				</th>
 				
+				<th nowrap>
+										
+					<?=$this->lang->line('recurrency_generated_invoices')?>
+					
+				</th>
 				
 				<th nowrap>
 					

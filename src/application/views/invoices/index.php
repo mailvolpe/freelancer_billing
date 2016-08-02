@@ -171,6 +171,15 @@
 					
 				</th>
 				
+				<th nowrap>
+					
+					<a href="<?=order_by_url('invoice_recurrency_id')?>">
+					
+						<?=$this->lang->line('invoice_recurrency_id')?>
+						
+					</a><?=order_by_reverse('invoice_recurrency_id')?>
+					
+				</th>				
 				
 				<th nowrap>
 					

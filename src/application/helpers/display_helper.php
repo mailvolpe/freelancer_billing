@@ -11,12 +11,14 @@ if( ! function_exists('explain_recurrency')){
 	function explain_recurrency($day, $month=false)
 	{
 
+		$explanation = '';
+	
 		$CI =& get_instance();
 		
 		if($month){
 		
 			$explanation = $CI->lang->line('yearly').' ';
-			$explanation .= $CI->lang->line('on_day').' ';
+			#$explanation .= $CI->lang->line('on_day').' ';
 			$explanation .= $day.'/'.$CI->lang->line('month_'.$month);
 			
 		}else{

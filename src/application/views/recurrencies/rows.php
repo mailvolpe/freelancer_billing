@@ -18,6 +18,13 @@
 </td>
 
 <td class="hidden-xs"><?=get_display_value($item->recurrency_limit, $this->lang->line('unlimited_recurrency'), true, false, ' '.$this->lang->line('recurrency_iterations'));?></td>
+
+<td class="hidden-xs">
+
+	<a href="invoices/index?invoice_recurrency_id=<?=$item->recurrency_id?>"><?=$this->Recurrency->count_generated_invoices($item->recurrency_id);?></a>
+
+</td>
+
 <td class="hidden-xs"><?=display_bool_value($item->recurrency_start, false, false, true, false);?></td>
 		
 		

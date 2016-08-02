@@ -17,7 +17,19 @@ class Recurrencies extends CI_Controller {
 
 	}
 
+	
+	public function generate_invoices(){
+	
+		$this->Recurrency->generate_invoices();
+	
+		set_flash_message($this->lang->line('operation_success'), 'success');
 
+		redirect('recurrencies/index', 'location');		
+	
+	}
+	
+	
+	
 	public function index($recurrency_account_id=false){
 
 		$data['itens'] = $this->Recurrency->index($recurrency_account_id);

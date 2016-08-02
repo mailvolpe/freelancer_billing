@@ -65,6 +65,12 @@ class Invoice extends CI_Model {
 
 		}
 
+		if($this->input->get('invoice_recurrency_id')){
+
+			$this->db->where('invoice_recurrency_id', $this->input->get('invoice_recurrency_id'));
+
+		}		
+		
 		if($this->input->get('invoice_account_id_min')){
 
 			$this->db->where('invoice_account_id >=', $this->input->get('invoice_account_id_min'));

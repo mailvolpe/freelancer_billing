@@ -148,6 +148,11 @@
 
 	<div class="col-sm-4 col-xs-12">
 
+		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoices/index/?invoice_recurrency_id=<?=$item->recurrency_id?> " >
+
+			<?=$this->lang->line('recurrency_generated_invoices')?> (<?=$this->Recurrency->count_generated_invoices($item->recurrency_id);?>)
+		
+		</a>	
 		
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>recurrencies/update/<?=$item->recurrency_id?> " >
 

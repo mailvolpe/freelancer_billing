@@ -44,7 +44,29 @@
 			</div>
 
 		</div>
-	
+
+		<div class="form-group">
+
+			<label class="col-sm-5 control-label">
+
+				<?=$this->lang->line('invoice_recurrency_id')?>
+
+			</label>
+
+			<div class="col-sm-7">
+
+				<p class="form-control-static">
+				
+					<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->invoice_recurrency_id;?>">
+						<?=format_id($item->invoice_recurrency_id)?>
+					</a>
+
+				</p>
+
+			</div>
+
+		</div>
+		
 		<div class="form-group">
 
 			<label class="col-sm-5 control-label">

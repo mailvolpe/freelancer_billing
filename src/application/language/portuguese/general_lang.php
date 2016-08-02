@@ -43,11 +43,13 @@ $lang['invoice_due_date']="Vencimento";
 $lang['invoice_paid_date']="Pagamento";
 $lang['invoice_id']="Número da Fatura";
 $lang['check_now'] = "Verificar agora";
+$lang['invoice_recurrency_id'] = "Recorrência";
+
 
 
 $lang['recurrencies']="Recorrências";
 $lang['recurrency']="Recorrência";
-$lang['recurrency_id']="Recorrência / Contrato";
+$lang['recurrency_id']="Recorrência";
 $lang['recurrency_account_id']="Cliente";
 $lang['recurrency_amount']="Valor";
 $lang['recurrency_when_day']="Dia do vencimento";
@@ -57,13 +59,16 @@ $lang['recurrency_limit']="Limite de Repetições";
 $lang['recurrency_iterations']="vezes";
 $lang['unlimited_recurrency']="Não estabelecido";
 $lang['recurrency_start']="Ativo";
+$lang['recurrency_generated_invoices']="Faturas geradas";
+$lang['generate_invoices']="Gerar Faturas";
+
 
 
 
 $lang['monthly'] = "Mensal";
 $lang['yearly'] = "Anual";
 $lang['yearly_recurrency_help'] = "Para recorrência anual";
-$lang['on_day'] = "todo dia";
+$lang['on_day'] = "dia";
 $lang['every_month'] = "Todo mês";
 $lang['db_now'] = "Hora Atual";
 

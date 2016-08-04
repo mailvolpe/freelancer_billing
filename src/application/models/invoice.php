@@ -9,6 +9,7 @@ class Invoice extends CI_Model {
 	 
     }
 
+	function invoices_to_notify(){
 
 		$this->db->join('accounts', 'accounts.account_id = invoices.invoice_account_id');
 	
@@ -46,6 +47,7 @@ class Invoice extends CI_Model {
 	
 		$invoice_statuses = $this->get_invoice_statuses();
 	
+		$invoices_due = $this->invoices_to_notify();
 		
 		foreach($invoices_due as $invoice){
 			

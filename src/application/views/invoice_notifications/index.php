@@ -173,17 +173,6 @@
 				</th>
 				
 				
-				<th nowrap>
-					
-					<a href="<?=order_by_url('invoice_notification_read_ip')?>">
-					
-						<?=$this->lang->line('invoice_notification_read_ip')?>
-						
-					</a><?=order_by_reverse('invoice_notification_read_ip')?>
-					
-				</th>
-				
-								
 				<th width=1%>
 				
 					 

@@ -103,7 +103,7 @@ class Invoice_status_update extends CI_Model {
 
 		#Limit & Offset
 		
-		$this->db->limit(get_limit());
+		//$this->db->limit(get_limit());
 
 		$this->db->offset($this->input->get('offset'));
 

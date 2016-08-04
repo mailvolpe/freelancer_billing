@@ -11,6 +11,8 @@ class Invoice extends CI_Model {
 
 	function invoices_to_notify(){
 
+		$this->db->select('invoice_id');
+	
 		$this->db->join('accounts', 'accounts.account_id = invoices.invoice_account_id');
 	
 		# Conta do cliente ativa
@@ -51,8 +53,8 @@ class Invoice extends CI_Model {
 		
 		foreach($invoices_due as $invoice){
 			
-			$invoice->invoice_status = $this->get_invoice_status($invoice);
-			
+			$invoice = $this->get_item($invoice->invoice_id);
+						
 			$item = array();
 			
 			$item['invoice_notification_invoice_id'] = $invoice->invoice_id;

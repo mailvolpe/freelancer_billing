@@ -17,9 +17,13 @@ class Invoices extends CI_Controller {
 		
 		$this->load->model("Invoice_status_update");
 		
+		$this->load->model("Invoice_notification");
+		
 		$this->load->vars(array("gateways"=>$this->Invoice_status_update->get_invoice_status_gateways()));
 		
 		$this->load->vars(array("statuses"=>$this->Invoice_status_update->get_invoice_status_update_statuses()));
+		
+		$this->load->vars(array("notification_types"=>$this->Invoice->get_invoice_statuses()));
 		
 		
 	}
@@ -30,7 +34,7 @@ class Invoices extends CI_Controller {
 		
 		set_flash_message($this->lang->line('operation_success'), 'success');
 
-		redirect('invoices/index', 'location');				
+		//redirect('invoices/index', 'location');				
 	
 	}
 
@@ -62,7 +66,9 @@ class Invoices extends CI_Controller {
 
 		$item = $this->Invoice->get_item($invoice_id);		
 		
-		$item->status = $this->Invoice_status_update->index($item->invoice_id);		
+		$item->status_updates = $this->Invoice_status_update->index($item->invoice_id);		
+		
+		$item->notifications = $this->Invoice_notification->index($item->invoice_id);
 
 		$this->load->vars(array("page"=>"invoices/view"));		
 

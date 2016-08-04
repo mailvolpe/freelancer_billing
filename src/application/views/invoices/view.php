@@ -105,9 +105,11 @@
 				
 					<? $item_status = $this->Invoice->get_invoice_status($item);  ?>
 					<?if($item->invoice_status==2){?>
-						<span class="text-danger bold"><?=$this->lang->line('invoice_status_pending_overdue');?></span>
+						<span class="text-danger bold"><?=$this->lang->line($notification_types[2]);?></span>
 					<?}elseif($item->invoice_status==1){?>
-						<span class="text-success bold"><?=$this->lang->line('invoice_status_paid');?></span>
+						<span class="text-success bold"><?=$this->lang->line($notification_types[1]);?></span>
+					<?}elseif($item->invoice_status==0){?>		
+						<span class="text-warning bold"><?=$this->lang->line($notification_types[0]);?></span>
 					<?}?>		
 
 				</p>
@@ -176,7 +178,53 @@
 
 		</div>
 		
-		<?if(count($item->status)>0){?>		
+
+		<?if(count($item->notifications)>0){?>		
+		
+			<div class="form-group">
+
+				<label class="col-sm-5 control-label">
+
+					<?=$this->lang->line('invoice_notifications')?>
+					
+				</label>
+
+				<div class="col-sm-7">
+
+					<div class="form-control-static">
+										
+						<?foreach($item->notifications as $notification){?>
+						
+							<p>
+							
+								<span class="label label-<?=$notification->invoice_notification_type==2?'danger':'default'?>"><?=$this->lang->line($notification_types[$notification->invoice_notification_type])?></span>
+								<?=human_date($notification->invoice_notification_sent, true)?>
+								
+								<a href="javasvcript:void(0);" onclick="$('#notifications_info_<?=$notification->invoice_notification_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
+								
+								<div class="small" style="display:none;" id="notifications_info_<?=$notification->invoice_notification_id?>">
+								
+								<b><?=$this->lang->line('invoice_notification_read')?>:</b> <?=human_date($notification->invoice_notification_read)?> 
+								
+								<?if($notification->invoice_notification_read){?>
+									<br>
+									<b><?=$this->lang->line('invoice_notification_read_ip')?>:</b> <?=$notification->invoice_notification_read_ip?>
+								<?}?>
+								</div>
+								
+							</p>
+							
+						<?}?>
+											
+					</div>
+
+				</div>
+
+			</div>
+			
+		<?}?>		
+		
+		<?if(count($item->status_updates)>0){?>		
 		
 			<div class="form-group">
 
@@ -190,22 +238,22 @@
 
 					<div class="form-control-static">
 										
-						<?foreach($item->status as $status){?>
+						<?foreach($item->status_updates as $status_update){?>
 						
 							<p>
 							
-								<span class="label label-primary"><?=$statuses[$status->invoice_status_update_status_code]?></span>
-								<?=human_date($status->invoice_status_update_datetime, true)?>
+								<span class="label label-primary"><?=$statuses[$status_update->invoice_status_update_status_code]?></span>
+								<?=human_date($status_update->invoice_status_update_datetime, true)?>
 								
-								<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
+								<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status_update->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
 								
-								<div class="small" style="display:none;" id="status_update_info_<?=$status->invoice_status_update_id?>">
+								<div class="small" style="display:none;" id="status_update_info_<?=$status_update->invoice_status_update_id?>">
 								
-								<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$gateways[$status->invoice_status_update_gateway]?> 
+								<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$gateways[$status_update->invoice_status_update_gateway]?> 
 								
 								<br>
 								
-								<b><?=$this->lang->line('invoice_status_update_transaction')?>:</b> <?=$status->invoice_status_update_transaction?>
+								<b><?=$this->lang->line('invoice_status_update_transaction')?>:</b> <?=$status_update->invoice_status_update_transaction?>
 								</div>
 								
 							</p>

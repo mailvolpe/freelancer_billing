@@ -80,6 +80,7 @@ class Invoice_notifications extends CI_Controller {
 				$_POST['invoice_notification_sent'] = db_now();
 				
 				
+				
 				$item = $this->validate();
 				
 				$invoice_notification_id = $this->Invoice_notification->create($item, $invoice);
@@ -93,7 +94,8 @@ class Invoice_notifications extends CI_Controller {
 				# API option: return $create
 
 			} catch(Exception $e) {
-
+			
+				//echo validation_errors();
 				$this->load->vars(array("message"=>$e->getMessage(), "message_class"=>"danger"));
 
 			}
@@ -158,7 +160,7 @@ class Invoice_notifications extends CI_Controller {
 				array ( 
 					"field"=>"invoice_notification_type", 
 					"label"=>"lang:invoice_notification_type", 
-					"rules"=>"required|trim"
+					"rules"=>"is_natural|trim"
 				),
 				
 								

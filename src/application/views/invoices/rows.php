@@ -16,7 +16,10 @@
 			<?}?>
 		</td>
 						
-		<td class="hidden-xs"><?=character_limiter(strip_tags($item->account_title), 45)?></td>
+		<td class="hidden-xs">
+			<?=character_limiter(strip_tags($item->account_title), 45)?>
+			<div class="small"><?=$item->account_email?></div>
+		</td>
 
 		<td class="hidden-xs" nowrap><?=format_currency($item->invoice_amount)?></td>
 

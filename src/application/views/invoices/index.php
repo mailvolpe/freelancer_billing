@@ -129,8 +129,7 @@
 				
 	</div>
 	
-
-	<div class="col-sm-2 col-sm-offset-8 col-xs-6">
+	<div class="col-sm-2 col-sm-offset-6 col-xs-3">
 
 		<a href="<?=base_url().'invoices/create'?>" type="button" class="btn btn-block btn-primary ">
 		
@@ -139,7 +138,18 @@
 		</a>		
 
 	</div>	
+	
+	
+	<div class="col-sm-2 col-sm-offset-0 col-xs-3">
 
+		<a href="<?=base_url().'invoices/dispatch_notifications'?>" type="button" class="btn btn-block btn-success ">
+		
+				<?=$this->lang->line('dispatch_notifications')?>
+			
+		</a>		
+
+	</div>	
+	
 </div>
 
 <!-- Applied Filters -->

@@ -9,6 +9,69 @@ class Invoice extends CI_Model {
 	 
     }
 
+
+		$this->db->join('accounts', 'accounts.account_id = invoices.invoice_account_id');
+	
+		# Conta do cliente ativa
+		$this->db->where('accounts.account_blocked_date', null);
+
+		# Faturas nao pagas (pagas notificam instantaneamente com status pending)
+		$this->db->where('invoice_paid_date', null);
+
+		# Faturas vencidas
+		$this->db->where('invoice_due_date	<', date('Y-m-d', strtotime("-3 days")));		
+		
+		# Se não tem notificação tipo 2 (overdue charging)
+		$this->db->where(' 
+			((
+				SELECT count(*)invoice_notification_type 
+				FROM invoice_notifications 
+				WHERE invoice_notification_invoice_id = invoices.invoice_id 
+				AND invoice_notification_type = 2
+			) = 0)', null, false);		
+		
+		$query = $this->db->get('invoices');
+		
+		echo $this->db->_error_message().$this->db->last_query(); # Debug assist
+	
+		return $query->result();		
+	
+	}
+	
+	function dispatch_notifications(){
+	
+		$created=0;
+	
+		$this->load->model('Invoice_notification');
+	
+		$invoice_statuses = $this->get_invoice_statuses();
+	
+		
+		foreach($invoices_due as $invoice){
+			
+			$invoice->invoice_status = $this->get_invoice_status($invoice);
+			
+			$item = array();
+			
+			$item['invoice_notification_invoice_id'] = $invoice->invoice_id;
+			
+			$item['invoice_notification_type'] = $invoice->invoice_status;
+			
+			$item['invoice_notification_sent'] = db_now();
+			
+			if($create = $this->Invoice_notification->create($item, $invoice)){
+			
+				$created++;
+			
+			}		
+			
+		}
+		
+		return $created;
+
+	
+	}
+	
 	function get_invoice_statuses(){
 	
 		$invoice_statuses = array(

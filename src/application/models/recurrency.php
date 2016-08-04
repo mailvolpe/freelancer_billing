@@ -57,8 +57,8 @@ class Recurrency extends CI_Model {
 			$this->db->where('recurrencies.recurrency_when_day >=', $this_month_last_day);
 		
 		}else{
-			//ou o dia da recorrencia é igual ao dia do mes
-			$this->db->where('recurrencies.recurrency_when_day =', $this_day);
+			//ou o dia da recorrencia é igual ou menor (e não fatura gerou neste mes - veja abaixo) ao dia do mes
+			$this->db->where('recurrencies.recurrency_when_day <=', $this_day);
 		
 		}
 		

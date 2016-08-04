@@ -24,7 +24,15 @@ class Invoices extends CI_Controller {
 		
 	}
 
+	public function dispatch_notifications(){
 	
+		$this->Invoice->dispatch_notifications();
+		
+		set_flash_message($this->lang->line('operation_success'), 'success');
+
+		redirect('invoices/index', 'location');				
+	
+	}
 
 	public function index($invoice_account_id=false){
 

@@ -30,7 +30,7 @@ class Invoice_notifications extends CI_Controller {
 			not_allowed();
 		}
 	
-		$data['itens'] = $this->Invoice_notification->index();
+		$data['itens'] = $this->Invoice_notification->index($invoice_id);
 
 		$this->load->vars(array("page" => "invoice_notifications/index"));
 

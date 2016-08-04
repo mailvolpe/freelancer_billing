@@ -7,12 +7,16 @@ class Invoice_notification extends CI_Model {
         // Call the Model constructor
         parent::__construct();
 	 
+		$this->load->model('Invoice');
+	 
+		$this->invoice_statuses = $this->Invoice->get_invoice_statuses();
+	 
     }
 
 
 	# Index #
 	
-    function index(){
+    function index($invoice_id){
 
 		# Security clauses goes here #
 	
@@ -20,6 +24,9 @@ class Invoice_notification extends CI_Model {
 	
 		# Filters #
 
+		
+		$this->db->where('invoice_notification_invoice_id', $invoice_id);
+		
 		if($this->input->get('invoice_notification_id')){
 
 			$this->db->where('invoice_notification_id', $this->input->get('invoice_notification_id'));
@@ -75,7 +82,7 @@ class Invoice_notification extends CI_Model {
 
 		#Limit & Offset
 		
-		$this->db->limit(get_limit());
+		//$this->db->limit(get_limit());
 
 		$this->db->offset($this->input->get('offset'));
 

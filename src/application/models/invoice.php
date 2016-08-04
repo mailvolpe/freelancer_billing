@@ -8,7 +8,41 @@ class Invoice extends CI_Model {
         parent::__construct();
 	 
     }
+	
+	function send_invoice_notification($invoice_id){
 
+		$this->load->model('Invoice_notification');
+	
+		$invoice = $this->get_item($invoice_id);
+		
+		$item = array();
+		
+		$item['invoice_notification_invoice_id'] = $invoice->invoice_id;
+		
+		$item['invoice_notification_type'] = $invoice->invoice_status;
+		
+		$item['invoice_notification_sent'] = db_now();
+		
+		if($create = $this->Invoice_notification->create($item, $invoice)){
+		
+			return true;
+		
+		}		
+	
+	}
+
+	function set_payment($invoice_id, $status){
+
+		$item = array();
+		
+		$item['invoice_paid_date'] = $status?db_now():null;
+	
+		$this->send_invoice_notification($invoice_id);
+	
+		return $this->update($invoice_id, $item);
+	
+	}
+	
 	function invoices_to_notify(){
 
 		$this->db->select('invoice_id');
@@ -45,29 +79,17 @@ class Invoice extends CI_Model {
 	
 		$created=0;
 	
-		$this->load->model('Invoice_notification');
-	
 		$invoice_statuses = $this->get_invoice_statuses();
 	
 		$invoices_due = $this->invoices_to_notify();
 		
 		foreach($invoices_due as $invoice){
 			
-			$invoice = $this->get_item($invoice->invoice_id);
-						
-			$item = array();
-			
-			$item['invoice_notification_invoice_id'] = $invoice->invoice_id;
-			
-			$item['invoice_notification_type'] = $invoice->invoice_status;
-			
-			$item['invoice_notification_sent'] = db_now();
-			
-			if($create = $this->Invoice_notification->create($item, $invoice)){
+			if($this->send_invoice_notification($invoice->invoice_id)){
 			
 				$created++;
 			
-			}		
+			}
 			
 		}
 		
@@ -243,7 +265,7 @@ class Invoice extends CI_Model {
 		$insert = $this->db->insert('invoices', $item);
 
 		if($id = $this->db->insert_id()){
-
+		
 			return $id;
 
 		}else if($this->db->_error_message()){

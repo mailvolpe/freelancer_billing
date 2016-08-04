@@ -128,6 +128,23 @@ class Invoice_status_update extends CI_Model {
 
 		if($id = $this->db->insert_id()){
 
+			$this->load->model('Invoice');
+		
+			$invoice = $this->Invoice->get_item($item['invoice_status_update_invoice_id']);
+			
+			#se o status da fatura for de nao pago e a atualizaçao de status for do tipo 1 marca como pago
+			if(!$invoice->invoice_paid_date AND $item['invoice_status_update_status_code']==1){
+				
+				$this->Invoice->set_payment($invoice->invoice_id, true);
+				
+			}elseif($invoice->invoice_paid_date AND $item['invoice_status_update_status_code']==2){
+			
+				#se o status da fatura pago e a atualizaçao de status for do tipo 2 marca como nao pago
+				$this->Invoice->set_payment($invoice->invoice_id, false);
+				
+			}
+			
+		
 			return $id;
 
 		}else if($this->db->_error_message()){

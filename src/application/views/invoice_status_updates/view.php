@@ -113,11 +113,13 @@
 			<?=$this->lang->line('back')?>
 		</a>	
 		
+		<?/*
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoice_status_updates/update/<?=$item->invoice_status_update_id?> " >
 
 			<?=$this->lang->line('update')?>
 		
 		</a>
+		*/?>
 		
 		<a class="btn btn-block btn-danger" href="<?=base_url()?>invoice_status_updates/remove/<?=$item->invoice_status_update_id?> " >
 		

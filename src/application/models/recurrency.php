@@ -105,6 +105,9 @@ class Recurrency extends CI_Model {
 			$create = $this->Invoice->create( (array) $invoice );
 		
 			if($create){
+			
+				$this->Invoice->send_invoice_notification($create);
+			
 				$created_invoices++;
 			}
 		

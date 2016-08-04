@@ -127,7 +127,7 @@ class Invoice_status_updates extends CI_Controller {
 
 	}
 
-
+	/*
 	public function update($invoice_status_update_id){
 
 		$item = $this->Invoice_status_update->get_item($invoice_status_update_id); # Security check
@@ -162,7 +162,7 @@ class Invoice_status_updates extends CI_Controller {
 
 		$this->load->view('template/template', array('item'=>$item));
 
-	}
+	}*/
 
 
 	function validate($fields = false){

@@ -34,7 +34,7 @@ class Invoices extends CI_Controller {
 		
 		set_flash_message($this->lang->line('operation_success'), 'success');
 
-		//redirect('invoices/index', 'location');				
+		redirect('invoices/index', 'location');				
 	
 	}
 

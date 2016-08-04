@@ -45,6 +45,7 @@ $lang['invoice_paid_date']="Pagamento";
 $lang['invoice_id']="Número da Fatura";
 $lang['check_now'] = "Verificar agora";
 $lang['invoice_recurrency_id'] = "Recorrência";
+$lang['dispatch_notifications'] = "Enviar Notificações";
 
 
 

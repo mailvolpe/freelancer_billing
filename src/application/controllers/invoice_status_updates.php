@@ -255,7 +255,7 @@ class Invoice_status_updates extends CI_Controller {
 
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect('invoice_status_updates/index/'.$item->invoice_status_update_invoice_id, 'location');
+					redirect('invoices/view/'.$item->invoice_status_update_invoice_id, 'location');
 
 				# API option: return $remove
 

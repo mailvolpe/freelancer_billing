@@ -24,6 +24,30 @@
 
 	<div class="form-horizontal col-sm-8 col-xs-12">
 
+		<?if($item->invoice_recurrency_id){?>
+			<div class="form-group">
+
+				<label class="col-sm-5 control-label">
+
+					<?=$this->lang->line('invoice_recurrency_id')?>
+
+				</label>
+
+				<div class="col-sm-7">
+
+					<p class="form-control-static">
+					
+						<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->invoice_recurrency_id;?>">
+							<?=format_id($item->invoice_recurrency_id)?>
+						</a>
+						<br><small><?=$item->recurrency_description?></small>
+
+					</p>
+
+				</div>
+
+			</div>
+		<?}?>	
 	
 		<div class="form-group">
 
@@ -45,30 +69,6 @@
 			</div>
 
 		</div>
-
-		<?if($item->invoice_recurrency_id){?>
-			<div class="form-group">
-
-				<label class="col-sm-5 control-label">
-
-					<?=$this->lang->line('invoice_recurrency_id')?>
-
-				</label>
-
-				<div class="col-sm-7">
-
-					<p class="form-control-static">
-					
-						<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->invoice_recurrency_id;?>">
-							<?=format_id($item->invoice_recurrency_id)?>
-						</a>
-
-					</p>
-
-				</div>
-
-			</div>
-		<?}?>
 	
 			
 		<div class="form-group">
@@ -178,128 +178,6 @@
 
 		</div>
 		
-
-		<?if(count($item->notifications)>0){?>		
-		
-			<div class="form-group">
-
-				<label class="col-sm-5 control-label">
-
-					<?=$this->lang->line('invoice_notifications')?>
-					
-				</label>
-
-				<div class="col-sm-7">
-
-					<div class="form-control-static">
-										
-						<?foreach($item->notifications as $notification){?>
-						
-							<p>
-							
-								<span class="label label-<?=$notification->invoice_notification_type==2?'danger':'default'?>"><?=$this->lang->line($notification_types[$notification->invoice_notification_type])?></span>
-								<?=human_date($notification->invoice_notification_sent, true)?>
-								
-								<a href="javasvcript:void(0);" onclick="$('#notifications_info_<?=$notification->invoice_notification_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
-								
-								<div class="small" style="display:none;" id="notifications_info_<?=$notification->invoice_notification_id?>">
-								
-								<b><?=$this->lang->line('invoice_notification_read')?>:</b> <?=human_date($notification->invoice_notification_read)?> 
-								
-								<?if($notification->invoice_notification_read){?>
-									<br>
-									<b><?=$this->lang->line('invoice_notification_read_ip')?>:</b> <?=$notification->invoice_notification_read_ip?>
-								<?}?>
-								</div>
-								
-							</p>
-							
-						<?}?>
-											
-					</div>
-
-				</div>
-
-			</div>
-			
-		<?}?>		
-		
-		<?if(count($item->status_updates)>0){?>		
-		
-			<div class="form-group">
-
-				<label class="col-sm-5 control-label">
-
-					<?=$this->lang->line('invoice_status_updates')?>
-					
-				</label>
-
-				<div class="col-sm-7">
-
-					<div class="form-control-static">
-										
-						<?foreach($item->status_updates as $status_update){?>
-						
-							<p>
-							
-								<span class="label label-primary"><?=$statuses[$status_update->invoice_status_update_status_code]?></span>
-								<?=human_date($status_update->invoice_status_update_datetime, true)?>
-								
-								<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status_update->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
-								
-								<div class="small" style="display:none;" id="status_update_info_<?=$status_update->invoice_status_update_id?>">
-								
-								<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$gateways[$status_update->invoice_status_update_gateway]?> 
-								
-								<br>
-								
-								<b><?=$this->lang->line('invoice_status_update_transaction')?>:</b> <?=$status_update->invoice_status_update_transaction?>
-								</div>
-								
-							</p>
-							
-						<?}?>
-											
-					</div>
-
-				</div>
-
-			</div>
-			
-		<?}elseif(!$item->invoice_paid_date){?>
-		
-			<div class="form-group">
-
-				<label class="col-sm-5 control-label">
-
-					<?=$this->lang->line('pay_invoice')?>
-					
-				</label>
-
-				<div class="col-sm-7">
-
-					<div class="form-control-static">
-						
-						<a class="btn btn-sm  btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
-							<i class="fa fa-money"></i> <?=$this->lang->line('PagSeguro')?>
-						</a>	
-								
-						<a class="btn btn-sm btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
-							<i class="fa fa-paypal"></i> <?=$this->lang->line('PayPal')?>
-						</a>									
-						
-						<div id="implement_payment" style="display:none;">
-							<br><p>Quando o cliente clicar nesse botão de pagamento ele já deve ser redirecionado para o PagSeguro ou Paypal. Uma url de retorno dos dados e o identificador também deve ser passada para que o sistema possa enviar informações sobre a transação de volta para o sistema.</p>
-						</div>
-						
-					</div>
-
-				</div>
-
-			</div>		
-		
-		<?}?>
-		
 		<div class="form-group">
 
 			<label class="col-sm-5 control-label">
@@ -323,33 +201,129 @@
 		
 	</div>   
 
-
+	
 	<div class="col-sm-4 col-xs-12">
 	
+		<h4>
+			<?=$this->lang->line('invoice_status_updates')?> (<?=count($item->status_updates)?>)
+			<a class="btn btn-xs btn-default pull-right" href="invoice_status_updates/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
+		</h4>
 	
+		<?if(count($item->status_updates)>0){?>		
+									
+			<?foreach($item->status_updates as $status_update){?>
+			
+				<p>
+				
+					<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status_update->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
+				
+					<a href="invoice_status_updates/view/<?=$status_update->invoice_status_update_id?>"><?=human_date($status_update->invoice_status_update_datetime)?></a>
+				
+					<span class="label label-<?=$status_update->invoice_status_update_status_code==1?'success':'default'?>"><?=$statuses[$status_update->invoice_status_update_status_code]?></span>
+					
+					<div class="small" style="display:none;" id="status_update_info_<?=$status_update->invoice_status_update_id?>">
+					
+						<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$gateways[$status_update->invoice_status_update_gateway]?> 
+						
+						<br>
+						
+						<b><?=$this->lang->line('invoice_status_update_transaction')?>:</b> <?=$status_update->invoice_status_update_transaction?>
+						
+					</div>
+					
+				</p>
+				
+			<?}?>
+									
+		<?}elseif(!$item->invoice_paid_date){?>
+		
+			<!--<h5><?=$this->lang->line('pay_invoice')?></h5>-->
+			
+			<a class="btn btn-sm  btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
+				<i class="fa fa-money"></i> <?=$this->lang->line('PagSeguro')?>
+			</a>	
+					
+			<a class="btn btn-sm btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
+				<i class="fa fa-paypal"></i> <?=$this->lang->line('PayPal')?>
+			</a>									
+			
+			<div id="implement_payment" style="display:none;">
+				<br><p>Quando o cliente clicar nesse botão de pagamento ele já deve ser redirecionado para o PagSeguro ou Paypal. Uma url de retorno dos dados e o identificador também deve ser passada para que o sistema possa enviar informações sobre a transação de volta para o sistema.</p>
+			</div>
+						
+		<?}?>	
+	
+		<!--
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoice_status_updates/index/<?=$item->invoice_id?> " >
 
 			<?=$this->lang->line('invoice_status_updates')?>
 		
 		</a>
+		-->
 	
+		<hr>
+	
+		<h4>
+			<?=$this->lang->line('invoice_notifications')?> (<?=count($item->notifications)?>)
+			<a class="btn btn-xs btn-default pull-right" href="invoice_notifications/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
+		</h4>
+
+		
+		<?if(count($item->notifications)>0){?>		
+							
+				<?foreach($item->notifications as $notification){?>
+				
+					<p>
+					
+						<a href="javasvcript:void(0);" onclick="$('#notifications_info_<?=$notification->invoice_notification_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
+					
+						<a href="invoice_notifications/view/<?=$notification->invoice_notification_id?>"><?=human_date($notification->invoice_notification_sent)?></a>
+					
+						<span class="label label-<?=$notification->invoice_notification_type==2?'danger':'default'?>"><?=$this->lang->line($notification_types[$notification->invoice_notification_type])?></span>
+					
+						<div class="small" style="display:none;" id="notifications_info_<?=$notification->invoice_notification_id?>">
+						
+							<b><?=$this->lang->line('invoice_notification_read')?>:</b> <?=human_date($notification->invoice_notification_read)?> 
+							
+							<?if($notification->invoice_notification_read){?>
+								<br>
+								<b><?=$this->lang->line('invoice_notification_read_ip')?>:</b> <?=$notification->invoice_notification_read_ip?>
+							<?}?>
+							
+						</div>
+						
+					</p>
+					
+				<?}?>						
+			
+		<?}?>			
+		<!--
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoice_notifications/index/<?=$item->invoice_id?> " >
 
 			<?=$this->lang->line('invoice_notifications')?>
 		
-		</a>	
-	
-		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoices/update/<?=$item->invoice_id?> " >
+		</a>			
+		-->
 
-			<?=$this->lang->line('update')?>
+		<hr>
+		<div class="row">
+			<div class="col-xs-8">
 		
-		</a>
-		
-		<a class="btn btn-block btn-danger" href="<?=base_url()?>invoices/remove/<?=$item->invoice_id?> " >
-		
-			<?=$this->lang->line('remove')?>
-			
-		</a>							
+				<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoices/update/<?=$item->invoice_id?> " >
+
+					<?=$this->lang->line('update')?>
+					<?=$this->lang->line('invoice')?>
+				
+				</a>	
+			</div>
+			<div class="col-xs-4">
+				<a class="btn btn-block btn-danger" href="<?=base_url()?>invoices/remove/<?=$item->invoice_id?> " >
+				
+					<?=$this->lang->line('remove')?>
+					
+				</a>		
+			</div>
+		</div>							
 		
 
 	</div>

@@ -109,7 +109,7 @@
 
 	<div class="col-sm-4 col-xs-12">
 
-		<a class="btn btn-block btn-default view-option-link" href="invoice_status_updates/index/<?=$item->invoice_status_update_invoice_id?>">
+		<a class="btn btn-block btn-default view-option-link" href="invoices/view/<?=$item->invoice_status_update_invoice_id?>">
 			<?=$this->lang->line('back')?>
 		</a>	
 		

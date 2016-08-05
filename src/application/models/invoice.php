@@ -8,6 +8,46 @@ class Invoice extends CI_Model {
         parent::__construct();
 	 
     }
+
+	function count_invoice_status_updates($invoice_id){
+	
+		$this->db->select('count(*) as total_updates');
+				
+		$this->db->where('invoice_status_update_invoice_id', $invoice_id);
+		
+		$query = $this->db->get('invoice_status_updates');
+		
+		//echo $this->db->_error_message().$this->db->last_query(); # Debug assist
+		
+		if($query->num_rows()>0){
+
+			$result = $query->row_object();
+
+			return $result->total_updates;	
+
+		}				
+		
+	}
+	
+	function count_invoice_notifications($invoice_id){
+	
+		$this->db->select('count(*) as total_notifications');
+				
+		$this->db->where('invoice_notification_invoice_id', $invoice_id);
+		
+		$query = $this->db->get('invoice_notifications');
+		
+		//echo $this->db->_error_message().$this->db->last_query(); # Debug assist
+		
+		if($query->num_rows()>0){
+
+			$result = $query->row_object();
+
+			return $result->total_notifications;	
+
+		}	
+	
+	}
 	
 	function send_invoice_notification($invoice_id){
 
@@ -247,11 +287,26 @@ class Invoice extends CI_Model {
 		
 		$query = $this->db->get('invoices');
 		
-		#Return
-		
 		# echo $this->db->_error_message().$this->db->last_query(); # Debug assist
-
-		return $query->result();
+		
+		#Return
+		$return = array();
+		
+		$array = $query->result();
+		
+		foreach ($array as $invoice){
+			
+			$invoice->total_notifications = $this->count_invoice_notifications($invoice->invoice_id);
+			
+			$invoice->total_status_updates = $this->count_invoice_status_updates($invoice->invoice_id);
+			
+			$return[] = $invoice;
+		
+		}
+		
+		//print_r($return);
+		
+		return $return;
 
     } 	
 
@@ -301,6 +356,8 @@ class Invoice extends CI_Model {
 	# Get item #
 
 	function get_item($invoice_id){
+	
+		$this->db->join('recurrencies', 'recurrencies.recurrency_id = invoices.invoice_recurrency_id', 'left');
 	
 		$this->db->join('accounts', 'accounts.account_id = invoices.invoice_account_id');
 

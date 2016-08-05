@@ -48,11 +48,22 @@ class Invoice_notifications extends CI_Controller {
 	
 	public function view($invoice_notification_id){
 
-		$item = $this->Invoice_notification->get_item($invoice_notification_id);		
+		$data['item'] = $item = $this->Invoice_notification->get_item($invoice_notification_id);		
+		
+		if(!$data['invoice'] = $invoice = $this->Invoice->get_item($item->invoice_notification_invoice_id, true)){
+			not_allowed();
+		}			
+		
+		$data['notification'] = $notification = $this->System_notification->notificate(
+			$data['invoice']->account_email, 
+			$this->invoice_statuses[$data['invoice']->invoice_status].'_notification', 
+			$data['invoice'], 
+			false
+			);		
 
 		$this->load->vars(array("page"=>"invoice_notifications/view"));		
 
-		$this->load->view('template/template', array('item'=>$item));	
+		$this->load->view('template/template', $data);	
 
 	}	
 	
@@ -224,7 +235,7 @@ class Invoice_notifications extends CI_Controller {
 
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect('invoice_notifications/index', 'location');
+					redirect('invoices/view/'.$item->invoice_notification_invoice_id, 'location');
 
 				# API option: return $remove
 

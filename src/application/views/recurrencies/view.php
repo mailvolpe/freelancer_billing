@@ -36,6 +36,7 @@
 				<p class="form-control-static">
 				
 					<?=$item->account_title?>
+					<div class="small"><?=$item->account_email?></div>
 
 				</p>
 

@@ -6,7 +6,8 @@
 						<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->recurrency_id;?>">
 							<?=format_id($item->recurrency_id)?>
 						</a></td>
-<td class="hidden-xs"><?=character_limiter(strip_tags($item->account_title), 45)?></td>
+<td class="hidden-xs"><?=character_limiter(strip_tags($item->account_title), 45)?>
+<div class="small"><?=$item->account_email?></div></td>
 <td class="hidden-xs"><?=format_currency($item->recurrency_amount)?></td>
 <td class="hidden-xs"><?=character_limiter(strip_tags($item->recurrency_description), 45)?></td>
 

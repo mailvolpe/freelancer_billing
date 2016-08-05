@@ -38,7 +38,7 @@ class Payment_pagseguro extends CI_Model {
 		# ----------------------------------------------------
 		$paymentRequest->addItem(
 			$invoice->invoice_id, 
-			date("d/m/Y", strtotime($invoice->invoice_due_date)).' - '.$invoice->invoice_description, 
+			$invoice->formatted_invoice_id.' - '.date("d/m/Y", strtotime($invoice->invoice_due_date)).' - '.$invoice->invoice_description, 
 			1, 
 			number_format($invoice->invoice_amount, 2, '.', '')
 		);

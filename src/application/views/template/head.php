@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 
 	<title>
-		<?=$this->lang->line($this->router->fetch_class());?> 
+		<?=isset($page_title)?$page_title:$this->lang->line($this->router->fetch_class());?> 
 	</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

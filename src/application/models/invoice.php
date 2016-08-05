@@ -387,7 +387,7 @@ class Invoice extends CI_Model {
 							
 				#Adiciona o link para acesso direto pela área do cliente
 				
-				$item->direct_link_url = 'LINK PARA A FATURA - IMPLEMENTAR EM invoice.php';
+				$item->invoice_public_url = base_url().'documents/invoice/'. urlencode( base64_encode($item->invoice_id) );
 				
 			}
 			

@@ -11,7 +11,7 @@
 			<?=format_id($item->invoice_id)?>
 
 			<span class="pull-right"><?=$item->account_title?></span>
-
+			
 		</h3>
 
 	</div>
@@ -38,13 +38,9 @@
 
 					<p class="form-control-static">
 					
-						<a class="" href="<?=base_url()?>recurrencies/view/<?=$item->invoice_recurrency_id;?>">
-							<?=format_id($item->invoice_recurrency_id)?>
+						<?=format_id($item->invoice_recurrency_id)?>
 							-
-							<?=$item->recurrency_description?>
-						</a>
-						
-
+						<?=$item->recurrency_description?>
 
 					</p>
 
@@ -213,21 +209,18 @@
 
 			<h4>
 				<?=$this->lang->line('invoice_status_updates')?> (<?=count($item->status_updates)?>)
-				<a class="btn btn-xs btn-default pull-right" href="invoice_status_updates/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
 			</h4>
 
 		
 			<?foreach($item->status_updates as $status_update){?>
 			
-				<p>
+				<div class="">
 				
-					<a href="javasvcript:void(0);" onclick="$('#status_update_info_<?=$status_update->invoice_status_update_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
-				
-					<a href="invoice_status_updates/view/<?=$status_update->invoice_status_update_id?>"><?=human_date($status_update->invoice_status_update_datetime)?></a>
+					<?=human_date($status_update->invoice_status_update_datetime)?>
 				
 					<span class="label label-<?=$status_update->invoice_status_update_status_code==1?'success':'default'?>"><?=$statuses[$status_update->invoice_status_update_status_code]?></span>
 					
-					<div class="small" style="display:none;" id="status_update_info_<?=$status_update->invoice_status_update_id?>">
+					<div class="small" id="status_update_info_<?=$status_update->invoice_status_update_id?>">
 					
 						<b><?=$this->lang->line('invoice_status_update_gateway')?>:</b> <?=$gateways[$status_update->invoice_status_update_gateway]?> 
 						
@@ -235,9 +228,10 @@
 						
 						<b><?=$this->lang->line('invoice_status_update_transaction')?>:</b> <?=$status_update->invoice_status_update_transaction?>
 						
+						<br><br>
 					</div>
 					
-				</p>
+				</div>
 				
 			<?}?>
 									
@@ -260,7 +254,6 @@
 	
 		<h4>
 			<?=$this->lang->line('invoice_notifications')?> (<?=count($item->notifications)?>)
-			<a class="btn btn-xs btn-default pull-right" href="invoice_notifications/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
 		</h4>
 
 		
@@ -268,15 +261,13 @@
 							
 				<?foreach($item->notifications as $notification){?>
 				
-					<p>
+					<div>
 					
-						<a href="javasvcript:void(0);" onclick="$('#notifications_info_<?=$notification->invoice_notification_id?>').toggle(200)"><i class="fa fa-info-circle"></i></a>
-					
-						<a href="invoice_notifications/view/<?=$notification->invoice_notification_id?>"><?=human_date($notification->invoice_notification_sent)?></a>
+						<?=human_date($notification->invoice_notification_sent)?>
 					
 						<span class="label label-<?=$notification->invoice_notification_type==2?'danger':'default'?>"><?=$this->lang->line($notification_types[$notification->invoice_notification_type])?></span>
 					
-						<div class="small" style="display:none;" id="notifications_info_<?=$notification->invoice_notification_id?>">
+						<div class="small" id="notifications_info_<?=$notification->invoice_notification_id?>">
 						
 							<b><?=$this->lang->line('invoice_notification_read')?>:</b> <?=human_date($notification->invoice_notification_read)?> 
 							
@@ -286,8 +277,8 @@
 							<?}?>
 							
 						</div>
-						
-					</p>
+						<br><br>
+					</div>
 					
 				<?}?>						
 			
@@ -299,36 +290,7 @@
 		
 		</a>			
 		-->
-
-		<hr>
-		<div class="row">
-
-			<div class="col-xs-12">
-		
-				<a class="btn btn-block btn-default view-option-link" href="<?=$item->invoice_public_url?>" >
-
-					<?=$this->lang->line('invoice_public_url')?>
-				
-				</a>	
-			</div>
-
-			<div class="col-xs-8">
-		
-				<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>invoices/update/<?=$item->invoice_id?> " >
-
-					<?=$this->lang->line('update')?>
-					<?=$this->lang->line('invoice')?>
-				
-				</a>	
-			</div>
-			<div class="col-xs-4">
-				<a class="btn btn-block btn-danger" href="<?=base_url()?>invoices/remove/<?=$item->invoice_id?> " >
-				
-					<?=$this->lang->line('remove')?>
-					
-				</a>		
-			</div>
-		</div>							
+							
 		
 
 	</div>

@@ -20,9 +20,9 @@ class Recurrencies extends CI_Controller {
 	
 	public function generate_invoices(){
 	
-		$this->Recurrency->generate_invoices();
+		$generated = $this->Recurrency->generate_invoices();
 	
-		set_flash_message($this->lang->line('operation_success'), 'success');
+		set_flash_message($this->lang->line('operation_success').' '.$this->lang->line('generated_invoices').': '.$generated, 'success');
 
 		redirect('recurrencies/index', 'location');		
 	

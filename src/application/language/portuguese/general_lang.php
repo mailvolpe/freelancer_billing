@@ -1,5 +1,9 @@
 <?php
 
+$lang['generated_invoices'] = "Faturas geradas";
+$lang['generated_notifications'] = "Notificações geradas";
+
+
 $lang['invoice_notification_preview'] = "Preview";
 $lang['invoice_status_pending_overdue']="Fatura em atraso";
 $lang['invoice_status_pending']="Fatura pendente";

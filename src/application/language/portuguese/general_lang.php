@@ -2,6 +2,7 @@
 
 $lang['generated_invoices'] = "Faturas geradas";
 $lang['generated_notifications'] = "Notificações geradas";
+$lang['pay_with_pagseguro'] = "Pagar com PagSeguro";
 
 
 $lang['invoice_notification_preview'] = "Preview";

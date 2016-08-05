@@ -204,13 +204,15 @@
 	
 	<div class="col-sm-4 col-xs-12">
 	
-		<h4>
-			<?=$this->lang->line('invoice_status_updates')?> (<?=count($item->status_updates)?>)
-			<a class="btn btn-xs btn-default pull-right" href="invoice_status_updates/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
-		</h4>
 	
 		<?if(count($item->status_updates)>0){?>		
-									
+
+			<h4>
+				<?=$this->lang->line('invoice_status_updates')?> (<?=count($item->status_updates)?>)
+				<a class="btn btn-xs btn-default pull-right" href="invoice_status_updates/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
+			</h4>
+
+		
 			<?foreach($item->status_updates as $status_update){?>
 			
 				<p>
@@ -237,20 +239,9 @@
 									
 		<?}elseif(!$item->invoice_paid_date){?>
 		
-			<!--<h5><?=$this->lang->line('pay_invoice')?></h5>-->
-			
-			<a class="btn btn-sm  btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
-				<i class="fa fa-money"></i> <?=$this->lang->line('PagSeguro')?>
-			</a>	
-					
-			<a class="btn btn-sm btn-default" href="javascript:void(0);" onclick="$('#implement_payment').toggle(200);">	
-				<i class="fa fa-paypal"></i> <?=$this->lang->line('PayPal')?>
-			</a>									
-			
-			<div id="implement_payment" style="display:none;">
-				<br><p>Quando o cliente clicar nesse botão de pagamento ele já deve ser redirecionado para o PagSeguro ou Paypal. Uma url de retorno dos dados e o identificador também deve ser passada para que o sistema possa enviar informações sobre a transação de volta para o sistema.</p>
-			</div>
-						
+			<h4><?=$this->lang->line('pay_invoice')?></h4>
+			<a href="invoices/payment/<?=$item->invoice_id?>" class="btn btn-block btn-success"/><i class="fa fa-money"></i> <?=$this->lang->line('pay_with_pagseguro')?></a>
+												
 		<?}?>	
 	
 		<!--

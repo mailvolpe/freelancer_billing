@@ -22,11 +22,17 @@
 
 <td class="hidden-xs">
 
-	<a href="invoices/index?invoice_recurrency_id=<?=$item->recurrency_id?>"><?=$this->Recurrency->count_generated_invoices($item->recurrency_id);?></a>
+	<a href="invoices/index?invoice_recurrency_id=<?=$item->recurrency_id?>"><?=$this->Recurrency->count_generated_invoices($item->recurrency_id);?> </a>
 
 </td>
 
-<td class="hidden-xs"><?=display_bool_value($item->recurrency_start, false, false, true, false);?></td>
+<td class="hidden-xs">
+
+	<? $recurrency_status=display_bool_value($item->recurrency_start, false, false, true, false); ?>
+
+	<?=$this->Recurrency->is_recurrency_over($item)?$this->lang->line('recurrency_over'):$recurrency_status?>
+
+</td>
 		
 		
 		<td width="1%" class="center" nowrap>

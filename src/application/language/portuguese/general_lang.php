@@ -1,9 +1,10 @@
 <?php
 
-$lang['generated_invoices'] = "Faturas geradas";
+
 $lang['generated_notifications'] = "Notificações geradas";
 $lang['pay_with_pagseguro'] = "Pagar com PagSeguro";
 $lang['invoice_public_url'] = "Link da Fatura";
+$lang['recurrency_over'] = "Finalizada";
 
 $lang['invoice_notification_preview'] = "Preview";
 $lang['invoice_status_pending_overdue']="Fatura em atraso";

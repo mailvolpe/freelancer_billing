@@ -228,8 +228,8 @@ class System_file extends CI_Model {
 			if(in_array($extension, $not_extensions)){continue;} #TIRA EXTENSÕES NEGATIVAS
 			
 			
-			//VERIFICA SE TAMANHO MÁXIMO DO SISTEMA É PERMITID0 # Não tem mais essa regra
-			//if($size > ((1*1024)*1024)*5){continue;} #MAX:5MB
+			//VERIFICA SE TAMANHO MÁXIMO DO SISTEMA É PERMITID0
+			if($size > ((1*1024)*1024)*5){continue;} #MAX:5MB
 			
 			
 			if(move_uploaded_file($original, $server_target))

@@ -9,6 +9,30 @@ class Recurrency extends CI_Model {
 	 
     }
 	
+/**
+	 * Se a recorrencia já tiver gerado o total de invoices (ou mais) retorna true
+	 * @param  object  $recurrency   [description]
+	 * @return boolean        True se a recorrencia tiver acabado
+	 */
+	function is_recurrency_over($recurrency)
+	{
+
+		if (
+			$this->count_generated_invoices($recurrency->recurrency_id)>=$recurrency->recurrency_limit
+			AND 
+			$recurrency->recurrency_limit > 0
+			){
+
+			return true;
+
+		}
+
+		
+		return false;
+	
+		
+	}	
+
 	function count_generated_invoices($recurrency_id){
 	
 		$this->db->select('count(*) as recurrency_generated_invoices');

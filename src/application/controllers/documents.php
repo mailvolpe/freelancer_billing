@@ -29,7 +29,16 @@ class Documents extends CI_Controller {
 		
 	}
 	
-	
+	/**
+	 * Exibe as recorrencias do cliente
+	 * @param  string $client_hash String que ao passar pela função unhash() retorna id do cliente 
+	 * @return (void)              Não retona dados e exibe a tela para o cliente
+	 */
+	public function recurrencies($client_hash){
+
+	}
+
+
 	public function invoice($invoice_hash){
 	
 		$invoice_id = base64_decode(urldecode($invoice_hash));

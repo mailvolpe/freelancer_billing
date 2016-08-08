@@ -128,6 +128,25 @@
 
 			<label class="col-sm-5 control-label">
 
+				<?=$this->lang->line('recurrency_generated_invoices')?>
+
+			</label>
+
+			<div class="col-sm-7">
+
+				<p class="form-control-static">
+				
+					<a href="invoices/index?invoice_recurrency_id=<?=$item->recurrency_id?>"><?=$this->Recurrency->count_generated_invoices($item->recurrency_id);?></a>
+				</p>
+
+			</div>
+
+		</div>
+
+		<div class="form-group">
+
+			<label class="col-sm-5 control-label">
+
 				<?=$this->lang->line('recurrency_start')?>
 
 			</label>
@@ -136,7 +155,9 @@
 
 				<p class="form-control-static">
 				
-					<?=display_bool_value($item->recurrency_start, false, false, true, false);?>
+					<? $recurrency_status=display_bool_value($item->recurrency_start, false, false, true, false); ?>
+
+					<?=$this->Recurrency->is_recurrency_over($item)?$this->lang->line('recurrency_over'):$recurrency_status?>
 
 				</p>
 

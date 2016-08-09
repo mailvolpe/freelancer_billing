@@ -9,10 +9,11 @@
 					
 			<div class="row-height">
 				
-				<div class="col-xs-0 col-sm-2 col-md-1 col-lg-1 col-xs-height col-xs-middle client_name_container">					
+				<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 col-xs-height col-xs-middle client_name_container">					
+					<h4><?=$this->System_settings->settings->system_title?></h4>
 				</div>
 				
-				<div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 col-xs-height topbar-container">
+				<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9 col-xs-height topbar-container">
 								
 					<div class="dropdown pull-right">
 					  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
@@ -56,7 +57,7 @@
 					</div>				
 					
 					
-					<div class=" sidebar-toggle visible-xs ">
+					<div class="sidebar-toggle visible-xs pull-right">
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#navbar" class="btn btn-smx btn btn-default">
 							<i class="fa fa-bars"></i>
 						</a>

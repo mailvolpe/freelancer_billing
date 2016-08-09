@@ -6,6 +6,9 @@
 	ROUTES FILE ACTUALLY BEGINS HERE
 /* ======================================================== */
 	
+	
+$route['cron.php'] = "updates/cron_execution";
+	
 $route['default_controller'] = "invoices";
 
 //Login Routes

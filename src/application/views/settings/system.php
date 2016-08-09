@@ -426,7 +426,7 @@
 
 	<div class="row">
 		
-		<div class="col-sm-9 col-sm-offset-3 col-xs-12">
+		<div class="col-sm-8 col-sm-offset-4 col-xs-12">
 		
 			<div class="row">
 		

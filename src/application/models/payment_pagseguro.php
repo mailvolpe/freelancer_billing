@@ -62,7 +62,7 @@ class Payment_pagseguro extends CI_Model {
 		
 		# Url de notificações para esta transação (opcional)
 		# ----------------------------------------------------
-		$url = base_url()."pagseguro_notification_url";
+		$url = base_url()."updates/pagseguro_notifications";
 		
 		$paymentRequest->setNotificationURL($url);  	
 				

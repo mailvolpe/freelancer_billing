@@ -49,7 +49,7 @@ class Documents extends CI_Controller {
 		
 		$item->notifications = $this->Invoice_notification->index($item->invoice_id);
 		
-		$this->load->vars(array("page_title"=>$this->lang->line('invoice').' '.$item->formatted_invoice_id.' - '.$item->formatted_invoice_due_date.' - '.$this->config->item('smtp_name')));		
+		$this->load->vars(array("page_title"=>$this->lang->line('invoice').' '.$item->formatted_invoice_id.' - '.$item->formatted_invoice_due_date.' - '.$this->System_settings->settings->system_title));		
 
 		$this->load->vars(array("page"=>"documents/invoice"));		
 

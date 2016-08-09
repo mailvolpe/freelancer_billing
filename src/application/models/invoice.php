@@ -63,11 +63,17 @@ class Invoice extends CI_Model {
 		
 		$item['invoice_notification_sent'] = db_now();
 		
-		if($create = $this->Invoice_notification->create($item, $invoice)){
+		try{
+		
+			$create = $this->Invoice_notification->create($item, $invoice);
 		
 			return true;
 		
-		}		
+		}catch(Exception $e){
+		
+			throw new Exception($this->lang->line($e->getMessage()));
+		
+		}
 	
 	}
 
@@ -96,7 +102,10 @@ class Invoice extends CI_Model {
 		$this->db->where('invoice_paid_date', null);
 
 		# Faturas vencidas
-		$this->db->where('invoice_due_date	<', date('Y-m-d', strtotime("-3 days")));		
+		
+		$notify_days_after = $this->System_settings->settings->days_after_invoice_pending_overdue_notification;
+		
+		$this->db->where('invoice_due_date	<', date('Y-m-d', strtotime("-$notify_days_after days")));		
 		
 		# Se não tem notificação tipo 2 (overdue charging)
 		$this->db->where(' 
@@ -109,7 +118,7 @@ class Invoice extends CI_Model {
 		
 		$query = $this->db->get('invoices');
 		
-		echo $this->db->_error_message().$this->db->last_query(); # Debug assist
+		//echo $this->db->_error_message().$this->db->last_query(); # Debug assist
 	
 		return $query->result();		
 	
@@ -118,6 +127,8 @@ class Invoice extends CI_Model {
 	function dispatch_notifications(){
 	
 		$created=0;
+		
+		$error=false;
 	
 		$invoice_statuses = $this->get_invoice_statuses();
 	
@@ -125,15 +136,28 @@ class Invoice extends CI_Model {
 		
 		foreach($invoices_due as $invoice){
 			
-			if($this->send_invoice_notification($invoice->invoice_id)){
+			try{
+			
+				$this->send_invoice_notification($invoice->invoice_id);
 			
 				$created++;
 			
+			} catch(Exception $e) {
+			
+				$error = $e->getMessage();
+			
 			}
+			
 			
 		}
 		
-		return $created;
+		$return = new stdClass;
+		
+		$return->created = $created;
+		
+		$return->last_error = $error;
+		
+		return $return;
 
 	
 	}

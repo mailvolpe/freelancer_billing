@@ -129,10 +129,12 @@ $autoload['language'] = array('general');
 $autoload['model'] = array(	
 						'Account',
 						'System_log', 
+						'System_settings',
 						'System_notification', 
 						'System_mail', 
 						'System_update',
 						'System_file', 
+						
 					);
 
 

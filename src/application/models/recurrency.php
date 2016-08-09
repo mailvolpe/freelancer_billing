@@ -112,6 +112,10 @@ class Recurrency extends CI_Model {
 		
 		$created_invoices = 0;
 		
+		$notifications_sent = 0;
+		
+		$error_message = false;
+		
 		foreach($active as $recurrency){
 		
 			$invoice = new stdClass;
@@ -122,7 +126,10 @@ class Recurrency extends CI_Model {
 			
 			$invoice->invoice_description = $recurrency->recurrency_description;
 			
-			$invoice->invoice_due_date = date("Y-m-d", strtotime("+3 days", strtotime( db_now() ) )); 
+			#Gerar com vencimento para depois de X dias.
+			$due_days_after = $this->System_settings->settings->days_after_generate_invoice_due_date;
+			
+			$invoice->invoice_due_date = date("Y-m-d", strtotime("+$due_days_after days", strtotime( db_now() ) )); 
 			
 			$invoice->invoice_recurrency_id = $recurrency->recurrency_id;
 			
@@ -130,14 +137,32 @@ class Recurrency extends CI_Model {
 		
 			if($create){
 			
-				$this->Invoice->send_invoice_notification($create);
+				try{
+				
+					$this->Invoice->send_invoice_notification($create);
+				
+					$notifications_sent++;
+				
+				}catch(Exception $e){
+				
+					$error_message = $e->getMessage();
+				
+				}
 			
 				$created_invoices++;
 			}
 		
 		}
 		
-		return $created_invoices;
+		$return = new stdClass;
+		
+		$return->error_message = $error_message;
+		
+		$return->created_invoices = $created_invoices;
+	
+		$return->generated_notifications = $notifications_sent;
+	
+		return $return;
 	
 	}
 	

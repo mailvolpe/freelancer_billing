@@ -119,43 +119,6 @@ class Invoice_notifications extends CI_Controller {
 
 	}
 
-	/*
-	public function update($invoice_notification_id){
-
-		$item = $this->Invoice_notification->get_item($invoice_notification_id); # Security check
-	
-		if($_SERVER['REQUEST_METHOD'] == "POST"){
-
-			try{
-
-				$item = $this->validate();
-
-				$update = $this->Invoice_notification->update($invoice_notification_id, $item);
-
-				# GUI option: redirects
-
-					set_flash_message($this->lang->line('operation_success'), 'success');
-
-					redirect('invoice_notifications/view/'.$invoice_notification_id, 'location');
-
-				# API option: return $update				
-
-			} catch(Exception $e) {
-
-				$this->load->vars(array("message"=>$e->getMessage(), "message_class"=>"danger"));
-
-			}
-
-		}
-
-		$item = $this->Invoice_notification->get_item($invoice_notification_id);		
-
-		$this->load->vars(array("page"=>"invoice_notifications/update"));		
-
-		$this->load->view('template/template', array('item'=>$item));
-
-	}
-	*/
 
 	function validate($fields = false){
 

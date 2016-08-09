@@ -1,26 +1,39 @@
 <?php
 
+$lang['activate_pagseguro'] = "Recebimento via PagSeguro";
+
+$lang['activate_bank_transfer'] = "Recebimento via depósito/transferência";
+
+$lang['sendmail_mode'] = "Tipo de envio de e-mail";
+
+$lang['days_after_generate_invoice_due_date'] = "Fatura vence em quantos dias";
+
+$lang['days_after_invoice_pending_overdue_notification'] = "Notificar vencimento após quantos dias";
+
+
+$lang['bank_transfer_instructions'] = "Instruções para depósito ou transferência";
+
 $lang['invoice_notification_helper_title'] = "Exibir dados da fatura";
 
 $lang['invoice_notification_helper'] = "
 <table width='100%' class='table'>
 <tr><th>Para inserir<th> Copie e cole</tr>
-<tr><td>ID da Fatura<td> <code>{formatted_invoice_id}</code></td></tr>
-<tr><td>Descrição da Fatura<td> <code>{invoice_description}</code></td></tr>
-<tr><td>Link da fatura<td> <code>{invoice_public_url}</code></td></tr>
-<tr><td>Data de criação da fatura<td> <code>{formatted_invoice_created_date}</code></td></tr>
-<tr><td>Data de vencimento da fatura<td> <code>{formatted_invoice_due_date}</code></td></tr>
-<tr><td>Data de pagamento da fatura<td> <code>{formatted_invoice_paid_date}</code></td></tr>
-<tr><td>Valor da fatura<td> <code>{invoice_amount}</code></td></tr>
-<tr><td>Nome do cliente<td> <code>{account_title}</code></td></tr>
-<tr><td>E-mail do cliente<td> <code>{account_email}</code></td></tr>
+<tr><td>ID da Fatura<td> <input class='form-control select_on_click' readonly value='{formatted_invoice_id}'></td></tr>
+<tr><td>Descrição da Fatura<td> <input class='form-control select_on_click' readonly value='{invoice_description}'></td></tr>
+<tr><td>Link da fatura<td> <input class='form-control select_on_click' readonly value='{invoice_public_url}'></td></tr>
+<tr><td>Data de criação da fatura<td> <input class='form-control select_on_click' readonly value='{formatted_invoice_created_date}'></td></tr>
+<tr><td>Data de vencimento da fatura<td> <input class='form-control select_on_click' readonly value='{formatted_invoice_due_date}'></td></tr>
+<tr><td>Data de pagamento da fatura<td> <input class='form-control select_on_click' readonly value='{formatted_invoice_paid_date}'></td></tr>
+<tr><td>Valor da fatura<td> <input class='form-control select_on_click' readonly value='{invoice_amount}'></td></tr>
+<tr><td>Nome do cliente<td> <input class='form-control select_on_click' readonly value='{account_title}'></td></tr>
+<tr><td>E-mail do cliente<td> <input class='form-control select_on_click' readonly value='{account_email}'></td></tr>
 </table>
 ";
 
 $lang['system_settings'] = "Configurações";
 $lang['system_title'] = "Título do Sistema";
 
-$lang['system_smtp'] = "Configurações de SMTP";
+$lang['system_mail_settings'] = "Configurações de e-mail";
 $lang['system_smtp_name'] = "Nome do remetente de e-mails";
 $lang['system_smtp_email'] = "E-mail do remetente de e-mails";
 $lang['system_smtp_host'] = "Servidor SMTP";
@@ -205,7 +218,7 @@ $lang['search'] = "Busca";
 $lang['create'] = "Cadastrar";
 $lang['view'] = "Ver";
 $lang['close'] = "Fechar";
-$lang['update'] = "Editar";
+$lang['update'] = "Atualizar";
 $lang['print'] = "Imprimir";
 $lang['remove'] = "Remover";
 $lang['pick'] = "Selecionar";
@@ -216,7 +229,8 @@ $lang['back'] = "Voltar";
 $lang['send'] = "Enviar";
 $lang['subject'] = "Assunto";
 $lang['to'] = "Para";
-
+$lang['error_message'] = "Mesagem de erro";
+$lang['smtp_failed'] = "Falha no envio através de SMTP";
 
 $lang['range_min'] = "a partir de`";
 $lang['range_max'] = "até";

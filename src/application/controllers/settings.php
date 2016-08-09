@@ -122,6 +122,42 @@ class Settings extends CI_Controller {
 						"label"=>"lang:invoice_status_paid_notification", 
 						"rules"=>"required"
 					),					
+
+					array ( 
+						"field"=>"bank_transfer_instructions_template", 
+						"label"=>"lang:bank_transfer_instructions_template", 
+						"rules"=>""
+					),				
+
+					array ( 
+						"field"=>"days_after_invoice_pending_overdue_notification", 
+						"label"=>"lang:days_after_invoice_pending_overdue_notification", 
+						"rules"=>"required|trim|is_natural_no_zero"
+					),									
+
+					array ( 
+						"field"=>"days_after_generate_invoice_due_date", 
+						"label"=>"lang:days_after_generate_invoice_due_date", 
+						"rules"=>"required|trim|is_natural_no_zero"
+					),														
+
+					array ( 
+						"field"=>"activate_pagseguro", 
+						"label"=>"lang:activate_pagseguro", 
+						"rules"=>""
+					),		
+
+					array ( 
+						"field"=>"activate_bank_transfer", 
+						"label"=>"lang:activate_bank_transfer", 
+						"rules"=>""
+					),		
+
+					array ( 
+						"field"=>"sendmail_mode", 
+						"label"=>"lang:sendmail_mode", 
+						"rules"=>""
+					),		
 					
 			);	
 					
@@ -324,7 +360,6 @@ class Settings extends CI_Controller {
 		}
 
 	}
-	
 	
 
 }

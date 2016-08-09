@@ -4,13 +4,10 @@ $(function () {
 
 
 function activate_element_events() {
-
-
 	
 	console.log('Elements activated');
 
 }
-
 
 
 function getUrlParameter(sParam)
@@ -63,3 +60,8 @@ function strstr(haystack, needle, bool) {
   }
 }
 
+$(document).ready(function(){
+
+	$('.select_on_click').click(function(){this.select()});
+
+});

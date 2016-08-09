@@ -17,6 +17,15 @@ class System_settings extends CI_Model {
 	
     }
 
+	function get_sendmail_modes(){
+	
+		return array(
+			"0"=>"mail()",
+			"1"=>"SMTP"
+		);
+	
+	}
+	
 	function get_settings(){
 	
 		$string = read_file($this->filepath);

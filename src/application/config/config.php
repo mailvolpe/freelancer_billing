@@ -375,13 +375,7 @@ $config['proxy_ips'] = '';
 */
 $config['index_query_limit'] = '8';
 
-
-# Credenciais PagSeguro
-# ----------------------------------------------
-$config['credentials_pagseguro'] = array(
-	"email"=>"mailvolpe@gmail.com",
-	//"token"=>"01F4992BCD8F4254A0D354018E088A58"
-);	
+	
 
 #$config['client_area_controller'] = 'projects';
 

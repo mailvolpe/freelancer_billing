@@ -111,7 +111,7 @@
 				<div class="col-xs-6">
 				
 
-					<a class="btn btn-block btn-default" href="<?=back_url()?>">
+					<a class="btn btn-block btn-default" href="invoices/view/<?=$invoice->invoice_id?>">
 
 						<?=$this->lang->line('cancel')?>
 

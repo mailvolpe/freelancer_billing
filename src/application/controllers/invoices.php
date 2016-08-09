@@ -65,7 +65,13 @@ class Invoices extends CI_Controller {
 	
 		$generated = $this->Invoice->dispatch_notifications();
 		
-		set_flash_message($this->lang->line('operation_success').' '.$this->lang->line('generated_notifications').': '.$generated, 'success');
+		$info_string = '<br>'.$this->lang->line('generated_notifications').': '.$generated->created;
+		
+		if($generated->last_error){
+			$info_string .= '<br>'.$this->lang->line('error_message').': '.$generated->last_error;
+		}
+		
+		set_flash_message($this->lang->line('operation_success').$info_string, 'success');
 
 		redirect('invoices/index', 'location');				
 	

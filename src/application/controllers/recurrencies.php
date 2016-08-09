@@ -22,7 +22,17 @@ class Recurrencies extends CI_Controller {
 	
 		$generated = $this->Recurrency->generate_invoices();
 	
-		set_flash_message($this->lang->line('operation_success').' '.$this->lang->line('generated_invoices').': '.$generated, 'success');
+		$info_string .= '<br>'.$this->lang->line('recurrency_generated_invoices').': '.$generated->created_invoices;
+	
+		$info_string .= '<br>'.$this->lang->line('generated_notifications').': '.$generated->generated_notifications;
+		
+		if($generated->error_message){
+		
+			$info_string .= '<br>'.$this->lang->line('error_message').': '.$generated->error_message;
+			
+		}
+	
+		set_flash_message($this->lang->line('operation_success').' '.$info_string, 'success');
 
 		redirect('recurrencies/index', 'location');		
 	

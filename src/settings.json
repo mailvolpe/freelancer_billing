@@ -1,0 +1,31 @@
+
+<p style="line-height: 20.8px;">A fatura {formatted_invoice_id} referente a&nbsp;<b>{invoice_description}</b>&nbsp;com vencimento para {formatted_invoice_due_date} encontra-se dispon&iacute;vel para pagamento&nbsp;em nosso sistema de gest&atilde;o.</p>
+
+<p style="line-height: 20.8px;">Acesse&nbsp;<a href="{direct_link_url}">este link para visualizar e pagar sua fatura</a>.<br />
+<br />
+{invoice_public_url}</p>
+
+<p style="line-height: 20.8px;">Acesse a &aacute;rea do cliente para realizar o pagamento ou desconsidere este aviso caso o mesmo j&aacute; tenha sido realizado.</p>
+
+<p style="line-height: 20.8px;">Atenciosamente,</p>
+";s:51:"invoice_status_pending_overdue_notification_subject";s:25:"Aviso de fatura em atraso";s:43:"invoice_status_pending_overdue_notification";s:578:"<p>Ol&aacute; {account_title},</p>
+
+<p>A fatura {formatted_invoice_id} referente a <b>{invoice_description}</b> com vencimento para {formatted_invoice_due_date} encontra-se com o status de atrasada em nosso sistema de gest&atilde;o.</p>
+
+<p>Acesse <a href="{direct_link_url}">este link para visualizar e pagar sua fatura</a></p>
+
+<p><span style="line-height: 20.8px;">{invoice_public_url}</span><br />
+<br />
+Acesse a &aacute;rea do cliente para realizar o pagamento ou desconsidere este aviso caso o mesmo j&aacute; tenha sido realizado.</p>
+
+<p>Atenciosamente,</p>
+";s:40:"invoice_status_paid_notification_subject";s:57:"Comprovante de pagamento de fatura {formatted_invoice_id}";s:32:"invoice_status_paid_notification";s:497:"<p>Ol&aacute; {account_title},</p>
+
+<p>A fatura {formatted_invoice_id} referente a <b>{invoice_description}</b> com vencimento para {formatted_invoice_due_date} encontra-se com o status de paga em nosso sistema de gest&atilde;o.</p>
+
+<p>Acesse <a href="{direct_link_url}">este link para visualizar e pagar sua fatura</a>.</p>
+
+<p>Acesse a &aacute;rea do cliente para realizar o pagamento ou desconsidere este aviso caso o mesmo j&aacute; tenha sido realizado.</p>
+
+<p>Atenciosamente,</p>
+";}

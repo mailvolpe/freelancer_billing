@@ -106,10 +106,7 @@ class Invoice_notification extends CI_Model {
 		$notification = $this->System_notification->notificate(
 			$invoice->account_email, 
 			$this->invoice_statuses[$invoice->invoice_status].'_notification', 
-			$invoice, 
-			true,
-			true,
-			true
+			$invoice
 			);
 			
 		if($notification !== true){

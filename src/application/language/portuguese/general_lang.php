@@ -1,5 +1,45 @@
 <?php
 
+$lang['invoice_notification_helper_title'] = "Exibir dados da fatura";
+
+$lang['invoice_notification_helper'] = "
+<table width='100%' class='table'>
+<tr><th>Para inserir<th> Copie e cole</tr>
+<tr><td>ID da Fatura<td> <code>{formatted_invoice_id}</code></td></tr>
+<tr><td>Descrição da Fatura<td> <code>{invoice_description}</code></td></tr>
+<tr><td>Link da fatura<td> <code>{invoice_public_url}</code></td></tr>
+<tr><td>Data de criação da fatura<td> <code>{formatted_invoice_created_date}</code></td></tr>
+<tr><td>Data de vencimento da fatura<td> <code>{formatted_invoice_due_date}</code></td></tr>
+<tr><td>Data de pagamento da fatura<td> <code>{formatted_invoice_paid_date}</code></td></tr>
+<tr><td>Valor da fatura<td> <code>{invoice_amount}</code></td></tr>
+<tr><td>Nome do cliente<td> <code>{account_title}</code></td></tr>
+<tr><td>E-mail do cliente<td> <code>{account_email}</code></td></tr>
+</table>
+";
+
+$lang['system_settings'] = "Configurações";
+$lang['system_title'] = "Título do Sistema";
+
+$lang['system_smtp'] = "Configurações de SMTP";
+$lang['system_smtp_name'] = "Nome do remetente de e-mails";
+$lang['system_smtp_email'] = "E-mail do remetente de e-mails";
+$lang['system_smtp_host'] = "Servidor SMTP";
+$lang['system_smtp_port'] = "Porta do servidor SMTP";
+$lang['system_smtp_user'] = "Usuário do servidor SMTP";
+$lang['system_smtp_pass'] = "Senha do servidor SMTP";
+$lang['system_smtp_instruction'] = "Consulte as configurações de SMTP da sua conta de e-mail para preencher corretamente estes campos.";
+
+$lang['pagseguro_credentials'] = "Credenciais PagSeguro";
+$lang['pagseguro_credentials_email'] = "E-mail PagSeguro";
+$lang['pagseguro_credentials_token'] = "Token PagSeguro";
+
+$lang['invoice_notifications_template'] = "Notifticações";
+$lang['invoice_status_pending_notification_subject'] = "Assunto da notificação de fatura disponível";
+$lang['invoice_status_pending_notification'] = "Texto da notificação de fatura disponível";
+$lang['invoice_status_pending_overdue_notification_subject'] = "Assunto da notificação de fatura em atraso";
+$lang['invoice_status_pending_overdue_notification'] = "Texto da notificação de fatura em atraso";
+$lang['invoice_status_paid_notification_subject'] = "Assunto da notificação de fatura paga";
+$lang['invoice_status_paid_notification'] = "Texto da notificação de fatura paga";
 
 $lang['generated_notifications'] = "Notificações geradas";
 $lang['pay_with_pagseguro'] = "Pagar com PagSeguro";

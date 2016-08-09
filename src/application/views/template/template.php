@@ -46,6 +46,10 @@
 						
 						<li><a href="settings"><?=$this->lang->line('settings')?></a></li>
 						
+						<?if($logged->account_is_admin){?>
+						<li><a href="settings/system"><?=$this->lang->line('system_settings')?></a></li>
+						<?}?>
+						
 						<li><a href="logout"><?=$this->lang->line('logout')?></a></li>
 						
 					  </ul>
@@ -105,7 +109,7 @@
 		
 			<div class="col-xs-12 col-sm-10 col-md-11 col-lg-11 footer center-xs right">
 		
-				<span class=""><?=$this->lang->line($this->router->fetch_class());?></span>
+				<span class=""><?=$this->System_settings->settings->system_title;?></span>
 				
 			</div>
 		</div>

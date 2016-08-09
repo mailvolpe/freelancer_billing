@@ -208,14 +208,13 @@
 	
 	<div class="col-sm-4 col-xs-12">
 	
-	
-		<?if(count($item->status_updates)>0){?>		
-
 			<h4>
 				<?=$this->lang->line('invoice_status_updates')?> (<?=count($item->status_updates)?>)
 				<a class="btn btn-xs btn-default pull-right" href="invoice_status_updates/create/<?=$item->invoice_id?>"><?=$this->lang->line('create')?></a>
 			</h4>
 
+			
+		<?if(count($item->status_updates)>0){?>		
 		
 			<?foreach($item->status_updates as $status_update){?>
 			
@@ -243,8 +242,7 @@
 									
 		<?}elseif(!$item->invoice_paid_date){?>
 		
-			<h4><?=$this->lang->line('pay_invoice')?></h4>
-			<a href="invoices/payment/<?=$item->invoice_id?>" class="btn btn-block btn-success"/><i class="fa fa-money"></i> <?=$this->lang->line('pay_with_pagseguro')?></a>
+			<p><a href="invoices/payment/<?=$item->invoice_id?>" class="btn btn-block btn-success"/><i class="fa fa-money"></i> <?=$this->lang->line('pay_with_pagseguro')?></a></p>
 												
 		<?}?>	
 	
@@ -305,7 +303,7 @@
 
 			<div class="col-xs-12">
 		
-				<a class="btn btn-block btn-default view-option-link" href="<?=$item->invoice_public_url?>" >
+				<a class="btn btn-block btn-default view-option-link" target="_blank" href="<?=$item->invoice_public_url?>" >
 
 					<?=$this->lang->line('invoice_public_url')?>
 				

@@ -17,65 +17,111 @@ class Settings extends CI_Controller {
 
 	}
 	
-	/*
-	public function smtp($unset=false){
 	
-		$account_id = $this->System_log->logged->account_id;
+	public function system(){
 	
-		$item = $this->Account->get_item($account_id); # Security check
-		
-		# UNSET SMTP
-
-		if($unset){
-		
-			try{
-
-				$empty = array();
-				$empty['account_mail_server'] = null;
-				$empty['account_mail_username'] = null;
-				$empty['account_mail_password'] = null;
-			
-				$update = $this->Account->update($account_id, $empty);
-
-				# GUI option: redirects
-
-					set_flash_message($this->lang->line('operation_success'), 'success');
-
-					redirect("settings", 'location');
-
-				# API option: return $update				
-
-			} catch(Exception $e) {
-
-				$this->load->vars(array("message"=>$e->getMessage(), "message_class"=>"danger"));
-
-			}		
-		
+		if(!$this->System_log->logged->account_is_admin){
+			not_allowed();
 		}
 		
-		# UPDATE SMTP
+		$settings = $this->System_settings->settings;
+			
+		# UPDATE CONFIGS
 		
 		if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 			$fields = array(
 
 					array ( 
-						"field"=>"account_mail_server", 
-						"label"=>"lang:account_mail_server", 
+						"field"=>"system_title", 
+						"label"=>"lang:system_title", 
 						"rules"=>"required|trim"
 					),		
-			
+
 					array ( 
-						"field"=>"account_mail_username", 
-						"label"=>"lang:account_mail_username", 
-						"rules"=>"required|trim"
+						"field"=>"system_smtp_name", 
+						"label"=>"lang:system_smtp_name", 
+						"rules"=>"trim"
+					),			
+					
+					array ( 
+						"field"=>"system_smtp_email", 
+						"label"=>"lang:system_smtp_email", 
+						"rules"=>"valid_email|trim"
 					),
 
 					array ( 
-						"field"=>"account_mail_password", 
-						"label"=>"lang:account_mail_password", 
-						"rules"=>"required|trim"
+						"field"=>"system_smtp_host", 
+						"label"=>"lang:system_smtp_host", 
+						"rules"=>"trim"
+					),			
+
+					array ( 
+						"field"=>"system_smtp_port", 
+						"label"=>"lang:system_smtp_port", 
+						"rules"=>"trim"
+					),								
+
+					array ( 
+						"field"=>"system_smtp_user", 
+						"label"=>"lang:system_smtp_user", 
+						"rules"=>"trim"
+					),				
+					
+					array ( 
+						"field"=>"system_smtp_pass", 
+						"label"=>"lang:system_smtp_pass", 
+						"rules"=>"trim"
+					),								
+					
+					array ( 
+						"field"=>"pagseguro_credentials_email", 
+						"label"=>"lang:pagseguro_credentials_email", 
+						"rules"=>"valid_email|trim"
+					),					
+
+					array ( 
+						"field"=>"pagseguro_credentials_token", 
+						"label"=>"lang:pagseguro_credentials_token", 
+						"rules"=>"trim"
+					),										
+					
+					array ( 
+						"field"=>"invoice_status_pending_notification_subject", 
+						"label"=>"lang:invoice_status_pending_notification_subject", 
+						"rules"=>"required"
 					),
+					
+					array ( 
+						"field"=>"invoice_status_pending_notification", 
+						"label"=>"lang:invoice_status_pending_notification", 
+						"rules"=>"required"
+					),
+
+
+					array ( 
+						"field"=>"invoice_status_pending_overdue_notification_subject", 
+						"label"=>"lang:invoice_status_pending_overdue_notification_subject", 
+						"rules"=>"required"
+					),
+					
+					array ( 
+						"field"=>"invoice_status_pending_overdue_notification", 
+						"label"=>"lang:invoice_status_pending_overdue_notification", 
+						"rules"=>"required"
+					),
+
+					array ( 
+						"field"=>"invoice_status_paid_notification_subject", 
+						"label"=>"lang:invoice_status_paid_notification_subject", 
+						"rules"=>"required"
+					),			
+					
+					array ( 
+						"field"=>"invoice_status_paid_notification", 
+						"label"=>"lang:invoice_status_paid_notification", 
+						"rules"=>"required"
+					),					
 					
 			);	
 					
@@ -83,20 +129,14 @@ class Settings extends CI_Controller {
 			try{
 
 				$item = $this->validate($fields);
-
-				$check = $this->System_mail->check_smtp_credentials(
-					$item['account_mail_server'], 
-					$item['account_mail_username'], 
-					$item['account_mail_password']
-				);
 				
-				$update = $this->Account->update($account_id, $item);
+				$update = $this->System_settings->update($item);
 
 				# GUI option: redirects
 
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect("settings", 'location');
+					redirect("settings/system", 'location');
 
 				# API option: return $update				
 
@@ -108,14 +148,14 @@ class Settings extends CI_Controller {
 
 		}
 
-		$item = $this->Account->get_item($account_id);		
-
-		$this->load->vars(array("page"=>"settings/smtp"));		
+		$item = $this->System_settings->get_settings();	
+		
+		$this->load->vars(array("page"=>"settings/system"));		
 
 		$this->load->view('template/template', array('item'=>$item));
 
 	}	
-	*/
+	
 	
 	public function index(){
 

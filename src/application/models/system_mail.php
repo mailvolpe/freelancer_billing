@@ -6,30 +6,16 @@ class System_mail extends CI_Model {
         // Call the Model constructor
         parent::__construct();
 
-        $this->config->load('smtp');
+        //$this->config->load('smtp');
 
-		$this->smtp_name =  $this->config->item('smtp_name');
-		$this->smtp_email = $this->config->item('smtp_email');
+		$this->smtp_name =  $this->System_settings->settings->system_smtp_name; 
+		$this->smtp_email = $this->System_settings->settings->system_smtp_email;
 		
-		$this->smtp_host =  $this->config->item('smtp_host');
-		$this->smtp_port =  $this->config->item('smtp_port');
-		$this->smtp_user =  $this->config->item('smtp_user');
-		$this->smtp_pass =  $this->config->item('smtp_pass');
-		
-		/*
-		if($logged = logged()){
-		
-			$this->smtp_name =  $logged->account_title ? $logged->account_title : $this->config->item('smtp_name');
-			$this->smtp_email =  $logged->account_email ? $logged->account_email : $this->config->item('smtp_email');
-			
-			$this->smtp_host =  $logged->account_mail_server ? $logged->account_mail_server : $this->config->item('smtp_host');
-			$this->smtp_user =  $logged->account_mail_username ? $logged->account_mail_username : $this->config->item('smtp_user');
-			$this->smtp_pass =  $logged->account_mail_password ? $logged->account_mail_password : $this->config->item('smtp_pass');
-		
-		}
-		*/
-		
-
+		$this->smtp_host =  $this->System_settings->settings->system_smtp_host;
+		$this->smtp_port =  $this->System_settings->settings->system_smtp_port;
+		$this->smtp_user =  $this->System_settings->settings->system_smtp_user;
+		$this->smtp_pass =  $this->System_settings->settings->system_smtp_pass;
+	
         
     }
 	
@@ -41,8 +27,8 @@ class System_mail extends CI_Model {
 		$this->smtp_pass = $password;
 		
 		$test_to = $this->smtp_email;
-		$test_subject = $this->lang->line('smtp_test_subject');
-		$test_body = $this->lang->line('smtp_test_body');
+		$test_subject = $this->lang->line('smtp_credentials_test');
+		$test_body = $this->lang->line('operation_success');
 		
 		$error = $this->send_notification_email($test_to, $test_subject, $test_body);
 		
@@ -58,7 +44,7 @@ class System_mail extends CI_Model {
 	
 	function send_notification_email($to, $subject, $body, $debug=false, $auth=true){
 
-		$message = "<div style='width:450px; max-width:100%;'>";
+		$message = "<div style='width:650px; max-width:100%;'>";
 		$message .= $body;
 		$message .= '<br>'.$this->smtp_name;
 		$message .= '<br>'.$this->smtp_email.'</p>';

@@ -11,6 +11,19 @@ class Payment_pagseguro extends CI_Model {
 	 
     }
 	
+	function get_credentials(){
+	
+	
+		# Credenciais PagSeguro
+		# ----------------------------------------------
+		$credentials = array(
+			"email"=>$this->System_settings->settings->pagseguro_credentials_email,
+			"token"=>$this->System_settings->settings->pagseguro_credentials_token
+		);
+		
+		return $credentials;
+		
+	}
 
 
 	# Get Checkout URL #
@@ -50,9 +63,10 @@ class Payment_pagseguro extends CI_Model {
 		# Url de notificações para esta transação (opcional)
 		# ----------------------------------------------------
 		$url = base_url()."pagseguro_notification_url";
-		$paymentRequest->setNotificationURL($url);  	
 		
-		$gateway = new paymentGateway('pagseguro', $this->config->item('credentials_pagseguro'));
+		$paymentRequest->setNotificationURL($url);  	
+				
+		$gateway = new paymentGateway('pagseguro', $this->get_credentials());
 		
 		$result = $gateway->register($paymentRequest, false);
 		

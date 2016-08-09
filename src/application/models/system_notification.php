@@ -11,15 +11,15 @@ class System_notification extends CI_Model {
 
     function notificate($to, $event_name, $data, $sendmail=true, $debug=false, $auth=true){
 
-    	$this->load->language('notification_templates');
-
-    	$message = $this->lang->line($event_name);
-
-    	$title = $this->lang->line($event_name.'_subject');
+		$message = $this->System_settings->settings->$event_name;
+		
+    	$title = $this->System_settings->settings->{$event_name.'_subject'};
 
     	foreach($data as $key => $value){
 
     			$message = str_replace("{".$key."}", $value, $message);
+				
+				$title = str_replace("{".$key."}", $value, $title);
 
     	}
 

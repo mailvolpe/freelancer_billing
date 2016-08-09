@@ -100,7 +100,7 @@ class Invoice_notifications extends CI_Controller {
 					
 					set_flash_message($this->lang->line('operation_success'), 'success');
 
-					redirect('invoice_notifications/index/'.$invoice_id, 'location');
+					redirect('invoices/view/'.$invoice_id, 'location');
 
 				# API option: return $create
 

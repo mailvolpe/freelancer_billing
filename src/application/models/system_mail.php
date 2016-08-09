@@ -42,7 +42,7 @@ class System_mail extends CI_Model {
 	
 	}
 	
-	function send_notification_email($to, $subject, $body, $debug=false, $auth=true){
+	function send_notification_email($to, $subject, $body, $debug=false){
 
 		$message = "<div style='width:650px; max-width:100%;'>";
 		$message .= $body;
@@ -50,15 +50,16 @@ class System_mail extends CI_Model {
 		$message .= '<br>'.$this->smtp_email.'</p>';
 		$message .= "</div>";
 
-		if(!$auth){
-			$mail_config['protocol'] = 'mail';
-		}else{
+		if($this->System_settings->settings->sendmail_mode == '1'){
 			$mail_config['protocol'] = 'smtp';		
-			$mail_config['smtp_port'] = $this->smtp_port;
-			$mail_config['smtp_host'] = $this->smtp_host;
-			$mail_config['smtp_user'] = $this->smtp_user;
-			$mail_config['smtp_pass'] = $this->smtp_pass;		
+		}else{
+			$mail_config['protocol'] = 'mail';
 		}
+		
+		$mail_config['smtp_port'] = $this->smtp_port;
+		$mail_config['smtp_host'] = $this->smtp_host;
+		$mail_config['smtp_user'] = $this->smtp_user;
+		$mail_config['smtp_pass'] = $this->smtp_pass;				
 
 		$mail_config['charset'] = 'utf-8';
 		$mail_config['mailtype'] = 'html';
@@ -83,7 +84,7 @@ class System_mail extends CI_Model {
 			if($debug){
 				return $this->email->print_debugger();
 			}else{
-				return $this->lang->line('smtp_failed');
+				return $this->lang->line($mail_config['protocol'].'_failed');
 			}
 
 		}else{

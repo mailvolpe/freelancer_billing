@@ -9,7 +9,7 @@ class System_notification extends CI_Model {
     }
 
 
-    function notificate($to, $event_name, $data, $sendmail=true, $debug=false, $auth=true){
+    function notificate($to, $event_name, $data, $sendmail=true, $debug=false){
 
 		$message = $this->System_settings->settings->$event_name;
 		
@@ -25,7 +25,7 @@ class System_notification extends CI_Model {
 
     	if($sendmail AND $to){
 
-    		$send_error = $this->System_mail->send_notification_email($to, $title, $message, $debug, $auth);
+    		$send_error = $this->System_mail->send_notification_email($to, $title, $message, $debug);
 
 			if( $send_error ){
 

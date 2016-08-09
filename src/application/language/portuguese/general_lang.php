@@ -231,6 +231,7 @@ $lang['subject'] = "Assunto";
 $lang['to'] = "Para";
 $lang['error_message'] = "Mesagem de erro";
 $lang['smtp_failed'] = "Falha no envio através de SMTP";
+$lang['mail_failed'] = "Falha no envio através da função mail()";
 
 $lang['range_min'] = "a partir de`";
 $lang['range_max'] = "até";

@@ -28,37 +28,30 @@ class Invoices extends CI_Controller {
 		
 	}
 
-	public function payment($invoice_id, $method='pagseguro'){
+	public function payment_pagseguro($invoice_id){
 	
 		$item = $this->Invoice->get_item($invoice_id); # Security check
+					
+		$this->load->model('Payment_pagseguro');
 		
-		if($method=='pagseguro'){
-			
-			$this->load->model('Payment_pagseguro');
-			
-			
-			
-			try{
+		try{
 
-				$checkout_url = $this->Payment_pagseguro->get_checkout_url($invoice_id);
+			$checkout_url = $this->Payment_pagseguro->get_checkout_url($invoice_id);
 
-				# GUI option: redirects				
+			# GUI option: redirects				
 
-				redirect($checkout_url);
+			redirect($checkout_url);
 
-				# API option: return $create
+			# API option: return $create
 
-			} catch(Exception $e) {
+		} catch(Exception $e) {
 
-				set_flash_message($e->getMessage(), 'danger');
+			set_flash_message($e->getMessage(), 'danger');
 
-				redirect('invoices/view/'.$invoice_id, 'location');
-
-			}
-
+			redirect('invoices/view/'.$invoice_id, 'location');
 
 		}
-	
+
 	}
 	
 	public function dispatch_notifications(){

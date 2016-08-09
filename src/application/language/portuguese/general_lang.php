@@ -56,6 +56,8 @@ $lang['invoice_status_paid_notification'] = "Texto da notificação de fatura pa
 
 $lang['generated_notifications'] = "Notificações geradas";
 $lang['pay_with_pagseguro'] = "Pagar com PagSeguro";
+$lang['pay_with_bank_transfer'] = "Efetuar depósito ou transferência";
+
 $lang['invoice_public_url'] = "Link da Fatura";
 $lang['recurrency_over'] = "Finalizada";
 

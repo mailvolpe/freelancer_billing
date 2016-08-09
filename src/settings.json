@@ -33,4 +33,4 @@ Acesse a &aacute;rea do cliente para realizar o pagamento ou desconsidere este a
 AG&Ecirc;NCIA:<br />
 CONTA:<br />
 <br />
-Favor enviar comprovante para:";s:47:"days_after_invoice_pending_overdue_notification";s:1:"1";s:36:"days_after_generate_invoice_due_date";s:1:"3";s:18:"activate_pagseguro";s:1:"0";s:22:"activate_bank_transfer";s:1:"1";s:13:"sendmail_mode";s:1:"0";}
+Favor enviar comprovante para:";s:47:"days_after_invoice_pending_overdue_notification";s:1:"1";s:36:"days_after_generate_invoice_due_date";s:1:"3";s:18:"activate_pagseguro";s:1:"1";s:22:"activate_bank_transfer";s:1:"1";s:13:"sendmail_mode";s:1:"0";}

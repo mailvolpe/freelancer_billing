@@ -55,11 +55,6 @@
 					  </ul>
 					</div>				
 					
-					<?/*					
-					<a href="<?=base_url().'sales_orders/create'?>" type="button" class="header-buttons btn pull-right btn-default">
-						<i class="fa fa-plus-circle"></i> <?=$this->lang->line('quote')?>
-					</a>
-					*/?>
 					
 					<div class=" sidebar-toggle visible-xs ">
 						<a href="javascript:void(0);" data-toggle="collapse" data-target="#navbar" class="btn btn-smx btn btn-default">
@@ -114,7 +109,7 @@
 			</div>
 		</div>
 		
-	
+	<? $this->load->view('template/modal'); ?>
 	
     </body>
 

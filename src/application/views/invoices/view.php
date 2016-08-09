@@ -242,8 +242,25 @@
 									
 		<?}elseif(!$item->invoice_paid_date){?>
 		
-			<p><a href="invoices/payment/<?=$item->invoice_id?>" class="btn btn-block btn-success"/><i class="fa fa-money"></i> <?=$this->lang->line('pay_with_pagseguro')?></a></p>
-												
+			<?if($this->System_settings->settings->activate_pagseguro){?>
+			
+				<p><a href="invoices/payment_pagseguro/<?=$item->invoice_id?>" class="btn btn-block btn-success"/><i class="fa fa-money"></i> <?=$this->lang->line('pay_with_pagseguro')?></a></p>
+			
+			<?}?>	
+			
+			<?if($this->System_settings->settings->activate_bank_transfer){?>
+			
+			<p><a href="javascript:void(0);" onclick="$('.bank_transfer_instructions').toggle(200);" class="btn btn-block btn-success"/><i class="fa fa-money"></i> <?=$this->lang->line('pay_with_bank_transfer')?></a></p>
+			
+			
+				<div class="well bank_transfer_instructions" style="display:none;">
+				
+					<?=$this->System_settings->settings->bank_transfer_instructions_template;?>
+					
+				</div>
+				
+			<?}?>						
+			
 		<?}?>	
 	
 		<!--

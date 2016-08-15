@@ -9,7 +9,7 @@ class System_notification extends CI_Model {
     }
 
 
-    function notificate($to, $event_name, $data, $sendmail=true, $debug=false){
+    function notificate($to, $event_name, $data, $sendmail=true, $debug=false, $invoice_notification_uniqid=false){
 
     	if($event_name == 'password_recovery'){
 
@@ -36,6 +36,13 @@ class System_notification extends CI_Model {
     	}
 
     	if($sendmail AND $to){
+
+            #Adiciona a imagem de rastreio ao final da notificação
+            if($invoice_notification_uniqid){
+
+                $message .= '<img src="'.base_url().'updates/notification_pixel/'.$invoice_notification_uniqid.'" width="1" height="1">';
+
+            }
 
     		$send_error = $this->System_mail->send_notification_email($to, $title, $message, $debug);
 

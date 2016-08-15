@@ -15,9 +15,11 @@ class Updates extends CI_Controller {
 
 	#Funçao que trata o retorno do PagSeguro e cria uma atualização de status em uma fatura.
 	
-	function notification_pixel($notification_id_hash){
+	function notification_pixel($invoice_notification_uniqid){
 	
-		echo "IMPLEMENTAR NOTIFICAÇÃO LIDA AQUI";
+		$this->load->model('Invoice_notification');
+
+		$this->Invoice_notification->mark_as_read($invoice_notification_uniqid);
 	
 	}	
 	

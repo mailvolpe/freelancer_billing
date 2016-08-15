@@ -13,6 +13,40 @@ class Invoice_notification extends CI_Model {
 	 
     }
 
+    function get_by_uniqid($uniqid){
+
+    	$query = $this->db->get_where('invoice_notifications', array('invoice_notification_uniqid' => $uniqid), 1);
+
+		if($query->num_rows()>0){
+
+			$result = $query->row_object();
+
+			return $result;	
+
+		}
+
+    }
+
+    function mark_as_read($invoice_notification_uniqid){
+
+    	$invoice_notification = $this->get_by_uniqid($invoice_notification_uniqid);
+
+    	if($invoice_notification->invoice_notification_read){
+
+    		return false;
+
+    	}
+
+    	$item = new stdClass;
+
+		$item->invoice_notification_read = db_now();
+
+		$item->invoice_notification_read_ip = $_SERVER['REMOTE_ADDR'];
+
+		$this->update($invoice_notification->invoice_notification_id, $item);
+
+    }
+
 
 	# Index #
 	
@@ -106,11 +140,14 @@ class Invoice_notification extends CI_Model {
 		$notification = $this->System_notification->notificate(
 			$invoice->account_email, 
 			$this->invoice_statuses[$invoice->invoice_status].'_notification', 
-			$invoice
+			$invoice,
+			true,
+			false,
+			$item['invoice_notification_uniqid']
 			);
 			
 		if($notification !== true){
-		
+
 			throw new Exception($notification);
 		
 		}

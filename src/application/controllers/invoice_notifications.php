@@ -94,6 +94,7 @@ class Invoice_notifications extends CI_Controller {
 				
 				$item = $this->validate();
 				
+				$item['invoice_notification_uniqid'] = uniqid();
 
 				$invoice_notification_id = $this->Invoice_notification->create($item, $invoice);
 				

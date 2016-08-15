@@ -10,6 +10,58 @@ class Payment_pagseguro extends CI_Model {
 		$this->load->model('Invoice');
 	 
     }
+
+    function update_invoice($notification_code){
+
+        # Consultar a notificação recebida
+
+        $url = "https://ws.pagseguro.uol.com.br/v2/transactions/notifications/".$notification_code."?email=".$this->System_settings->settings->pagseguro_credentials_email."&token=".$this->System_settings->settings->pagseguro_credentials_token;
+	
+        $contents = file_get_contents($url);
+
+        $parser = new XmlParser($contents);  
+
+        # Transforma a notificação em um array
+
+        $array = $parser->getResult('transaction');
+
+        # Transforma a notificação em um Objeto para ser inserido na tabela de invoice_status_updates
+
+        $item = new stdClass;
+
+        $item->invoice_status_update_invoice_id = $array['reference'];
+
+        $item->invoice_status_update_datetime = $array['lastEventDate'];
+
+        $item->invoice_status_update_gateway = '1';
+
+        $item->invoice_status_update_transaction = $array['code'];
+
+        #Define o status da transacão
+
+        if($array['status']=='1' OR $array['status']=='2'){
+            
+            $item->invoice_status_update_status_code = 0;
+
+        }elseif($array['status']=='3'){
+
+            $item->invoice_status_update_status_code = 1;
+
+        }elseif($array['status']=='6' OR $array['status']=='7'){
+
+            $item->invoice_status_update_status_code = 2;
+
+        }
+        
+        #Salva a notificação como atualização de status da fatura
+
+        if(isset($item->invoice_status_update_status_code)){
+
+            $this->Invoice_status_update->create($item);
+
+        }    	
+
+    }
 	
 	function get_credentials(){
 	

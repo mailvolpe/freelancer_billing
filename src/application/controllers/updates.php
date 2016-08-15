@@ -9,7 +9,7 @@ class Updates extends CI_Controller {
 
 		parent::__construct();
 		
-			
+			 
 
 	}
 
@@ -41,9 +41,21 @@ class Updates extends CI_Controller {
 	#Funçao que trata o retorno do PagSeguro e cria uma atualização de status em uma fatura.
 	
 	function pagseguro_notifications(){
+
+        $this->load->model('Invoice_status_update');
+
+        $this->load->model('Payment_pagseguro');
+
+        $this->load->library('gateway');
 	
-		echo "IMPLEMENTAR RETORNO AUTOMATICO DE DADOS AQUI";
-	
+        if($this->input->post('notificationType')!='transaction'){
+
+            return;
+
+        }
+
+        $this->Payment_pagseguro->update_invoice($this->input->post('notificationCode'));
+
 	}
 
 	

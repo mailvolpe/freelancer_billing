@@ -1,4 +1,4 @@
-a:21:{s:12:"system_title";s:18:"Freelancer Billing";s:16:"system_smtp_name";s:14:"Empresa Modelo";s:17:"system_smtp_email";s:27:"usuario@seu-servidor.com.br";s:16:"system_smtp_host";s:24:"mail.seu-servidor.com.br";s:16:"system_smtp_port";s:3:"587";s:16:"system_smtp_user";s:27:"usuario@seu-servidor.com.br";s:16:"system_smtp_pass";s:23:"senha_da_conta_de_email";s:27:"pagseguro_credentials_email";s:38:"seu_email_pagseugro@algum-servidor.com";s:27:"pagseguro_credentials_token";s:19:"seu_token_pagseguro";s:43:"invoice_status_pending_notification_subject";s:66:"Sua fatura {formatted_invoice_id} está disponível para pagamento";s:35:"invoice_status_pending_notification";s:710:"<p style="line-height: 20.8px;">Ol&aacute; {account_title},</p>
+a:21:{s:12:"system_title";s:18:"Freelancer Billing";s:16:"system_smtp_name";s:14:"Empresa Modelo";s:17:"system_smtp_email";s:28:"contato@empresamodelo.com.br";s:16:"system_smtp_host";s:24:"mail.seu-servidor.com.br";s:16:"system_smtp_port";s:3:"587";s:16:"system_smtp_user";s:27:"usuario@seu-servidor.com.br";s:16:"system_smtp_pass";s:23:"senha_da_conta_de_email";s:27:"pagseguro_credentials_email";s:38:"seu_email_pagseugro@algum-servidor.com";s:27:"pagseguro_credentials_token";s:19:"seu_token_pagseguro";s:43:"invoice_status_pending_notification_subject";s:66:"Sua fatura {formatted_invoice_id} está disponível para pagamento";s:35:"invoice_status_pending_notification";s:710:"<p style="line-height: 20.8px;">Ol&aacute; {account_title},</p>
 
 <p style="line-height: 20.8px;">A fatura {formatted_invoice_id} referente a&nbsp;<b>{invoice_description}</b>&nbsp;com vencimento para {formatted_invoice_due_date} encontra-se dispon&iacute;vel para pagamento&nbsp;em nosso sistema de gest&atilde;o.</p>
 
@@ -29,8 +29,10 @@ Acesse a &aacute;rea do cliente para realizar o pagamento ou desconsidere este a
 <p>Acesse a &aacute;rea do cliente para realizar o pagamento ou desconsidere este aviso caso o mesmo j&aacute; tenha sido realizado.</p>
 
 <p>Atenciosamente,</p>
-";s:35:"bank_transfer_instructions_template";s:88:"BANCO:<br />
-AG&Ecirc;NCIA:<br />
-CONTA:<br />
+";s:35:"bank_transfer_instructions_template";s:256:"Para realizar o pagamento da fatura, efetue o dep&oacute;sito ou transfer&ecirc;ncia na seguinte conta:<br />
 <br />
-Favor enviar comprovante para:";s:47:"days_after_invoice_pending_overdue_notification";s:1:"1";s:36:"days_after_generate_invoice_due_date";s:1:"3";s:18:"activate_pagseguro";s:1:"1";s:22:"activate_bank_transfer";s:1:"1";s:13:"sendmail_mode";s:1:"0";}
+<strong>BANCO:&nbsp;<br />
+AG&Ecirc;NCIA:<br />
+CONTA:</strong><br />
+<br />
+E enviar o comprovante para:contato@empresamodelo.com.br";s:47:"days_after_invoice_pending_overdue_notification";s:1:"1";s:36:"days_after_generate_invoice_due_date";s:1:"3";s:18:"activate_pagseguro";s:1:"1";s:22:"activate_bank_transfer";s:1:"1";s:13:"sendmail_mode";s:1:"0";}

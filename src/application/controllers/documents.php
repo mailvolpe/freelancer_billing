@@ -28,13 +28,57 @@ class Documents extends CI_Controller {
 
 		
 	}
+
+	public function payment_pagseguro($invoice_hash){
+	
+		$invoice_id = base64_decode(urldecode($invoice_hash));
+
+		$item = $this->Invoice->get_item($invoice_id); # Security check
+					
+		$this->load->model('Payment_pagseguro');
+		
+		try{
+
+			$checkout_url = $this->Payment_pagseguro->get_checkout_url($invoice_id);
+
+			# GUI option: redirects				
+
+			redirect($checkout_url);
+
+			# API option: return $create
+
+		} catch(Exception $e) {
+
+			set_flash_message($e->getMessage(), 'danger');
+
+			redirect('documents/invoice/'.$invoice_hash, 'location');
+
+		}
+
+	}	
 	
 	/**
 	 * Exibe as recorrencias do cliente
 	 * @param  string $client_hash String que ao passar pela função unhash() retorna id do cliente 
 	 * @return (void)              Não retona dados e exibe a tela para o cliente
 	 */
-	public function recurrencies($client_hash){
+	public function balance($account_hash){
+
+		$account_id = base64_decode(urldecode($account_hash));
+
+		if(!$data['item'] = $this->Account->get_item($account_id)){
+			not_allowed();
+		}
+
+		if(!$data['itens'] = $this->Invoice->index($account_id)){
+			not_allowed();
+		}
+		
+		$this->load->vars(array("page_title"=>$data['item']->account_title.' - '.$this->lang->line('account_public_url').' - '.$this->System_settings->settings->system_title));		
+
+		$this->load->vars(array("page"=>"documents/balance"));	
+
+		$this->load->view('template/documents', $data);	
 
 	}
 
@@ -43,7 +87,9 @@ class Documents extends CI_Controller {
 	
 		$invoice_id = base64_decode(urldecode($invoice_hash));
 
-		$item = $this->Invoice->get_item($invoice_id);		
+		if(!$item = $this->Invoice->get_item($invoice_id)){
+			not_allowed();
+		}
 		
 		$item->status_updates = $this->Invoice_status_update->index($item->invoice_id);		
 		

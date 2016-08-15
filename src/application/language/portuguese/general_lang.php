@@ -1,5 +1,7 @@
 <?php
 
+$lang['account_public_url'] = "Área do cliente";
+
 $lang['activate_pagseguro'] = "Recebimento via PagSeguro";
 
 $lang['activate_bank_transfer'] = "Recebimento via depósito/transferência";

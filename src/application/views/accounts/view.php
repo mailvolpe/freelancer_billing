@@ -208,13 +208,17 @@
 
 	<div class="col-sm-4 col-xs-12">
 
+		<a class="btn btn-block btn-default view-option-link" href="<?=$item->account_public_url?>" >
+
+			<?=$this->lang->line('account_public_url')?>
+		
+		</a>
+	
 		<a class="btn btn-block btn-default view-option-link" href="<?=base_url()?>accounts/update/<?=$item->account_id?> " >
 
 			<?=$this->lang->line('update')?>
 		
-		</a>
-	
-		
+		</a>		
 		
 		<?if($item->account_blocked_date){?>
 		

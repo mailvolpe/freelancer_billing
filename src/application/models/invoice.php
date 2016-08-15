@@ -9,6 +9,12 @@ class Invoice extends CI_Model {
 	 
     }
 
+    function get_invoice_public_url($invoice_id){
+
+    	return base_url().'documents/invoice/'. urlencode( base64_encode($invoice_id) );
+
+    }
+
 	function count_invoice_status_updates($invoice_id){
 	
 		$this->db->select('count(*) as total_updates');
@@ -196,7 +202,7 @@ class Invoice extends CI_Model {
 	
 	# Index #
 	
-    function index($invoice_account_id=false){
+    function index($invoice_account_id=false, $paginate=true){
 
 		# Security clauses goes here #
 	
@@ -302,10 +308,13 @@ class Invoice extends CI_Model {
 		}
 
 		#Limit & Offset
-		
-		$this->db->limit(get_limit());
+		if($paginate){
 
-		$this->db->offset($this->input->get('offset'));
+			$this->db->limit(get_limit());
+
+			$this->db->offset($this->input->get('offset'));
+
+		}
 
 		#Performs query
 		
@@ -380,6 +389,8 @@ class Invoice extends CI_Model {
 	# Get item #
 
 	function get_item($invoice_id){
+
+		$this->load->model('account');
 	
 		$this->db->join('recurrencies', 'recurrencies.recurrency_id = invoices.invoice_recurrency_id', 'left');
 	
@@ -411,7 +422,9 @@ class Invoice extends CI_Model {
 							
 				#Adiciona o link para acesso direto pela área do cliente
 				
-				$item->invoice_public_url = base_url().'documents/invoice/'. urlencode( base64_encode($item->invoice_id) );
+				$item->invoice_public_url = $this->get_invoice_public_url($item->invoice_id);
+
+				$item->account_public_url = $this->account->get_account_public_url($result->invoice_account_id);
 				
 			}
 			

@@ -9,6 +9,12 @@ class Account extends CI_Model {
 	 
     }
 	
+    function get_account_public_url($account_id){
+
+    	return base_url().'documents/balance/'. urlencode( base64_encode($account_id) );
+
+    }
+
 	function count_active_recurrencies($account_id){
 	
 		$this->db->select("count(*) as active_recurrencies");
@@ -111,7 +117,6 @@ class Account extends CI_Model {
 			$data->photo_path = "assets/img/no-user.jpg";
 			
 		}
-		
 		
 		return $data;
 		
@@ -386,6 +391,8 @@ class Account extends CI_Model {
 		if($query->num_rows()>0){
 
 			$result = $query->row_object();
+
+			$result->account_public_url = $this->get_account_public_url($result->account_id);
 
 			return $result;	
 

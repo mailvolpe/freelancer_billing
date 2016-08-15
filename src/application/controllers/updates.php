@@ -24,8 +24,16 @@ class Updates extends CI_Controller {
 	#Funçao que é acionada a partir da cron e pode ser executada a partir da rota cron.php.
 	
 	function cron_execution(){
+
+		$this->load->model('Recurrency');
+
+		$this->load->model('Invoice');
 	
-		echo "IMPLEMENTAR CRON AQUI";
+		$this->output->enable_profiler(TRUE);
+
+		$this->Recurrency->generate_invoices();
+
+		$this->Invoice->dispatch_notifications();
 		
 	
 	}	

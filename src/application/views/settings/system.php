@@ -112,7 +112,23 @@
 
 	</div>		
 
-	
+	<div class="form-group">
+
+		<label class="col-sm-4 control-label">
+
+			<?=$this->lang->line('cron_call_instructions')?>
+
+		</label>
+
+		<div class="col-sm-8">
+
+			<p><?=$this->lang->line('cron_call_instructions_text')?></p>
+
+			<code><?=base_url()?>cron.php</code>
+
+		</div>
+
+	</div>			
 	
 	<legend><?=$this->lang->line('system_mail_settings')?></legend>
 

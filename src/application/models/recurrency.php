@@ -97,7 +97,7 @@ class Recurrency extends CI_Model {
 		
 		$query = $this->db->get('recurrencies');
 		
-		echo $this->db->_error_message().$this->db->last_query(); # Debug assist
+		//echo $this->db->_error_message().$this->db->last_query(); # Debug assist
 		
 		return $query->result();		
 	

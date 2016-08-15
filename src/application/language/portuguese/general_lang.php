@@ -1,5 +1,9 @@
 <?php
 
+$lang['cron_call_instructions'] = "Instruções para configurar a automatização";
+
+$lang['cron_call_instructions_text'] = "Para manter o sistema funcionando automaticamente é necessário realizar uma chamada diariamente para a URL abaixo. Ao ser acionada, o sistema irá gerar as faturas e notificações de acordo com as regras definidas. Esta chamada pode ser configurada em seu próprio servidor (Ex. Tarefas Cron no CPanel) ou através de algum site que permita o agendamento de chamadas de URL. (Ex.: https://cron-job.org/en/)";
+
 $lang['account_public_url'] = "Área do cliente";
 
 $lang['activate_pagseguro'] = "Recebimento via PagSeguro";
@@ -29,6 +33,7 @@ $lang['invoice_notification_helper'] = "
 <tr><td>Valor da fatura<td> <input class='form-control select_on_click' readonly value='{invoice_amount}'></td></tr>
 <tr><td>Nome do cliente<td> <input class='form-control select_on_click' readonly value='{account_title}'></td></tr>
 <tr><td>E-mail do cliente<td> <input class='form-control select_on_click' readonly value='{account_email}'></td></tr>
+<tr><td>Link para área do cliente<td> <input class='form-control select_on_click' readonly value='{account_public_url}'></td></tr>
 </table>
 ";
 

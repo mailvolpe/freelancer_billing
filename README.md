@@ -10,6 +10,26 @@ Sistema Open Source para gestão de clientes e cobrança recorrente automatizada
 - User: **admin@admin.com**
 - Pass: **admin**
 
+##Instalação passo-a-passo
+
+Para obter suporte durante a instalação entre em contato pelo facebook: https://www.facebook.com/mailvolpe
+
+Requisitos: PHP e MySQL
+
+1. Baixar o repositório em https://github.com/formasites/freelancer_billing/ e colocar os arquivos no diretório desejado no servidor.
+
+2. Criar o banco de dados e um usuário MySQL e importar os dados do arquivo freelancer_billing.sql para o banco de dados.
+
+3. Configurar o arquivo de conexão com o banco de dados application/config/database.php com os dados do banco de dados e do usuário criado no passo anterior.
+
+Vídeo explicativo para instalação: (https://www.youtube.com/watch?v=1MvsIhmpJzM)
+
+## Contribua
+
+1. Veja as tarefas e próximos passos em (https://trello.com/b/SQzvgWzT/freelancer-billing)
+2. Leia a documentação do framework utilizado: (http://www.codeigniter.com/userguide2/) É simples, leve tem uma curva de aprendizado muito suave e várias funções e recursos embutidos.
+
+
 ##Descrição do Funcionamento a partir do modelo de dados
 Link para video explicativo sobre o modelo de dados: (https://www.youtube.com/watch?v=cbCMy5xd_SQ)
 
@@ -53,15 +73,3 @@ Cada notificação tem:
 ## Rotinas Automáticas
 * O sistema deve criar faturas automaticamente a partir das regras cadastradas nos planos. (Faturas também podem ser criadas manualmente)
 * O sistema deve enviar as notificações automaticamente a partir das faturas criadas.
-			 
-## Instalação
-Vídeo explicativo para instalação: (https://www.youtube.com/watch?v=1MvsIhmpJzM)
-
-1. Baixe o repositório
-2. Crie a base de dados "billing" e importe o arquivo .sql (DUMP)
-3. Coloque os arquivos em seu servidor local "Ex,: http://localhost" e pronto.
-
-## Contribua
-
-1. Veja as tarefas e próximos passos em (https://trello.com/b/SQzvgWzT/freelancer-billing)
-2. Leia a documentação do framework utilizado: (http://www.codeigniter.com/userguide2/) É simples, leve tem uma curva de aprendizado muito suave e várias funções e recursos embutidos.
